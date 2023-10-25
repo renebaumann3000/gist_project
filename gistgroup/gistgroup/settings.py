@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-q9d8=)^v(l^dg5-!$^enga*^vh+xby-z&$0ck_q5!dsz2%ok%a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io']
+
+# Trusted origin for Django Admin login
+CSRF_TRUSTED_ORIGINS = ['https://8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io']
 
 
 # Application definition
