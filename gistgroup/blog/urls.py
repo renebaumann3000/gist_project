@@ -10,7 +10,7 @@ from django.urls import path
 from .views import BlogPostListView, BlogPostDetailView  # Import the class-based view
 
 urlpatterns = [
-    path('', BlogPostListView.as_view(), name='test'),
+    path('', BlogPostListView.as_view(), name='index'),
     path('post/<int:pk>/', BlogPostDetailView.as_view(), name='post_detail'),
 ]
 

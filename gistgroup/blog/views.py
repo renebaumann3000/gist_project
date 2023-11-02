@@ -7,7 +7,7 @@ from .models import BlogPost
 
 class BlogPostListView(ListView):
     model = BlogPost  
-    template_name = 'test.html'
+    template_name = 'index.html'
     context_object_name = 'posts'
 
 class BlogPostDetailView(DetailView):  # Create a detail view
