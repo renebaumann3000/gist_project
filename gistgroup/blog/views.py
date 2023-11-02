@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import BlogPost
 from .forms import BlogPostForm
 
@@ -22,3 +22,8 @@ class AddAdminPostView(CreateView):
     template_name = 'admin_post.html'
 #    fields = '__all__'
 
+class UpdatePostView(UpdateView):
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = 'admin_edit_post.html'
+#    fields = ['title', 'content']
