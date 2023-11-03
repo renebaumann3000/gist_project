@@ -10,15 +10,21 @@
     <title>GIST Group</title>
 </head>
 <body>
+    <!-- Page Title -->
     <h1>Delete Post</h1>
     <br/><br/>
+    
+    <!-- Display the Post Title to Confirm Deletion -->
     <h3>Delete: {{ post.title }}</h3>
+    
+    <!-- Delete Post Form -->
     <div class="form-group"></div>
     <form method="POST">
         {% csrf_token %}
- 
-        <button class="btn btn-danger">Delete Post {{ post.pk }}</button>
-    </div>
+        
+        <!-- Delete Button -->
+        <button class="btn btn-danger">Delete Post</button>
+    </form>
 </body>
 </html>
 

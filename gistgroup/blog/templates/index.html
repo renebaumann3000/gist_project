@@ -7,22 +7,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Django Blog</title>
+    <title>GIST Group Berlin</title>
 </head>
 <body>
-    <h1>Welcome to My Django Blog</h1>
-    <h2>Blog Posts</h2>
+    <!-- Page Title -->
+    <h1>Welcome to our GIST Group Berlin</h1>
+    
+    <!-- Section Title for Blog Articles -->
+    <h2>Blog Articles</h2>
+    
+    <!-- List of Blog Posts -->
     <ul>
         {% for post in posts %}
         <li> 
+            <!-- Blog Post Title with Link to Detail Page -->
             <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
-            <p>Author: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.publication_date }} - <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
-
-            <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <br/></p>
-
+            
+            <!-- Author, Publication Date, Edit, and Delete Links -->
+            <p>
+                Author: {{ post.author.first_name }} {{ post.author.last_name }} - 
+                {{ post.publication_date }} - 
+                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
+                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
+            </p>
+            
+            <!-- Blog Post Content -->
             <p>{{ post.content }}</p>
         </li>
         {% empty %}
+        <!-- Displayed when there are no blog posts available -->
         <li>No blog posts available.</li>
         {% endfor %}
     </ul>

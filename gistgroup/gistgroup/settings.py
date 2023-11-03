@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io']
 
-# Trusted origin for Django Admin login
+# Trusted origin for Django Admin login -> Custom added
 CSRF_TRUSTED_ORIGINS = ['https://8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io']
 
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'blog', # Custom added
 ]
 
 MIDDLEWARE = [

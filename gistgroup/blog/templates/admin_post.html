@@ -10,14 +10,20 @@
     <title>GIST Group</title>
 </head>
 <body>
+    <!-- Page Title -->
     <h1>Add Blog Post</h1>
 
+    <!-- Blog Post Form -->
     <div class="form-group"></div>
     <form method="POST">
         {% csrf_token %}
+        
+        <!-- Render form fields as paragraphs -->
         {{ form.as_p }}
+        
+        <!-- Submit Button -->
         <button class="btn btn-success">Post</button>
-    </div>
+    </form>
 </body>
 </html>
 

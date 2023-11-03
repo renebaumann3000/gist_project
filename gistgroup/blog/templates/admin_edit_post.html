@@ -10,14 +10,20 @@
     <title>GIST Group</title>
 </head>
 <body>
-    <h1>Update Post: {{ post.pk}}</h1>
+    <!-- Page Title -->
+    <h1>Update Post: {{ post.pk }}</h1>
 
+    <!-- Blog Post Update Form -->
     <div class="form-group"></div>
     <form method="POST">
         {% csrf_token %}
+        
+        <!-- Render form fields as paragraphs -->
         {{ form.as_p }}
+        
+        <!-- Update Button -->
         <button class="btn btn-success">Update</button>
-    </div>
+    </form>
 </body>
 </html>
 

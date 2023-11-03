@@ -10,13 +10,24 @@
     <title>Blog Post Detail</title>
 </head>
 <body>
+    <!-- Blog Post Title -->
     <h1>{{ post.title }}</h1>
-    <p><strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.publication_date }}  -<a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a></p>
+    
+    <!-- Blog Post Author and Publication Date -->
+    <p>
+        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} -
+        {{ post.publication_date }} -
+        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
+    </p>
+    
+    <!-- Blog Post Content -->
     <p>{{ post.content }}</p>
 
-<br/><br/>
-<a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+    <!-- Link to Go Back to the Index Page -->
+    <br/><br/>
+    <a href="{% url 'index' %}" class="btn btn-primary">Back</a>
 </body>
 </html>
 
 {% endblock %}
+
