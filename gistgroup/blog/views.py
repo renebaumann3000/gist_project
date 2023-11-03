@@ -11,6 +11,7 @@ class BlogPostListView(ListView):
     model = BlogPost  
     template_name = 'index.html'
     context_object_name = 'posts'
+    ordering = ['-publication_date']
 
 class BlogPostDetailView(DetailView):  # Create a detail view
     model = BlogPost

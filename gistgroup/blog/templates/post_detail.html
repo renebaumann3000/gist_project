@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>{{ post.title }}</h1>
-    <p><strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a></p>
+    <p><strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.publication_date }}  -<a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a></p>
     <p>{{ post.content }}</p>
 
 <br/><br/>
