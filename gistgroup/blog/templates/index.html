@@ -16,7 +16,10 @@
         {% for post in posts %}
         <li> 
             <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
-            <p>Author: {{ post.author.first_name }} {{ post.author.last_name }} - <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <br/></p>
+            <p>Author: {{ post.author.first_name }} {{ post.author.last_name }} - <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
+
+            <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <br/></p>
+
             <p>{{ post.content }}</p>
         </li>
         {% empty %}
