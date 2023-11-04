@@ -5,6 +5,7 @@ from .views import (
     AdminPostView, 
     UpdatePostView, 
     DeletePostView,
+    AddCategoryView,
     
   )
 
@@ -13,7 +14,8 @@ urlpatterns = [
     path('post/<int:pk>/', BlogPostDetailView.as_view(), name='post_detail'), # URL for displaying a single blog post
     path('post/<int:pk>/delete', DeletePostView.as_view(), name='admin_delete_post'), # URL for deleting a blog post as admin
     path('post/<int:pk>/edit', UpdatePostView.as_view(), name='admin_edit_post'), # URL for editing a blog post as admin
-    path('admin_post/', AdminPostView.as_view(), name='admin_post') # URL for adding a new admin blog post
+    path('admin_post/', AdminPostView.as_view(), name='admin_post'), # URL for adding a new admin blog post
+    path('add_category/', AddCategoryView.as_view(), name='add_category') # URL for adding a new category
 ]    
 
     

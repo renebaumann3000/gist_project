@@ -6,8 +6,8 @@ from django.views.generic import (
     UpdateView, 
     DeleteView,
 )
-from .models import BlogPost
-from .forms import BlogPostForm
+from .models import BlogPost, Category
+from .forms import BlogPostForm, CategoryForm
 from django.urls import reverse_lazy
 
 # View for listing all blog posts.
@@ -28,6 +28,13 @@ class AdminPostView(CreateView):
     model = BlogPost  
     form_class = BlogPostForm
     template_name = 'admin_post.html'
+
+# View for adding a new category.
+class AddCategoryView(CreateView):
+    model = Category  
+    form_class = CategoryForm
+    template_name = 'add_category.html'
+    success_url = '/blog/'
 
 # View for updating an existing blog post as admin.
 class UpdatePostView(UpdateView):

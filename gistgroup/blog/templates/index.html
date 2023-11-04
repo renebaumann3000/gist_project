@@ -21,10 +21,11 @@
         {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - {{ post.category }}
             
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
+                
                 Author: {{ post.author.first_name }} {{ post.author.last_name }} 
                 {{ post.publication_date }} 
 

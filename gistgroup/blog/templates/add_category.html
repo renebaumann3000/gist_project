@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIST Group</title>
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+
+    <!-- Page Title -->
+    <h1>Add Category</h1>
+
+    <!-- Blog Post Form -->
+    <div class="form-group"></div>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Render form fields as paragraphs -->
+        {{ form.as_p }}
+        
+        <!-- Submit Button -->
+        <button class="btn btn-success">Add Category</button>
+    </form>
+
+    {% else %}
+
+    Not allowed!
+
+    {% endif %}
+
+</body>
+</html>
+
+{% endblock %}
