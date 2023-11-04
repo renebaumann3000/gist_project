@@ -11,6 +11,7 @@
     <title>GIST Group</title>
   </head>
   <body>
+
 <!-- Bootstrap CSS Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'index' %}">GIST Group</a>
@@ -24,9 +25,16 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
 
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'admin_post' %}">Admin Post</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+
+          {% else %}
 
           <li class="nav-item">
             <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -35,6 +43,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
+
+          {% endif %}
+          
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

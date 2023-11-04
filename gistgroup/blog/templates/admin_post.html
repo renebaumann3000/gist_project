@@ -10,6 +10,9 @@
     <title>GIST Group</title>
 </head>
 <body>
+
+    {% if user.is_authenticated %}
+
     <!-- Page Title -->
     <h1>Add Blog Post</h1>
 
@@ -24,6 +27,13 @@
         <!-- Submit Button -->
         <button class="btn btn-success">Post</button>
     </form>
+
+    {% else %}
+
+    Not allowed!
+
+    {% endif %}
+
 </body>
 </html>
 

@@ -10,6 +10,9 @@
     <title>GIST Group</title>
 </head>
 <body>
+
+    {% if user.is_authenticated %}
+
     <!-- Page Title -->
     <h1>Delete Post</h1>
     <br/><br/>
@@ -25,6 +28,13 @@
         <!-- Delete Button -->
         <button class="btn btn-danger">Delete Post</button>
     </form>
+
+    {% else %}
+
+    Not allowed!
+
+    {% endif %}
+
 </body>
 </html>
 

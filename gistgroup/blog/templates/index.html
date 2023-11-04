@@ -18,18 +18,23 @@
     
     <!-- List of Blog Posts -->
     <ul>
-        {% for post in posts %}
+        {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
             <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
             
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
-                Author: {{ post.author.first_name }} {{ post.author.last_name }} - 
-                {{ post.publication_date }} - 
+                Author: {{ post.author.first_name }} {{ post.author.last_name }} 
+                {{ post.publication_date }} 
+
+                {% if user.is_authenticated %}
+
                 <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
                 <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
             </p>
+
+            {% endif %}
             
             <!-- Blog Post Content -->
             <p>{{ post.content }}</p>

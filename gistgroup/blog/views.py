@@ -14,14 +14,14 @@ from django.urls import reverse_lazy
 class BlogPostListView(ListView):
     model = BlogPost  
     template_name = 'index.html'
-    context_object_name = 'posts'
+    context_object_name = 'posts' # Specify the variable name in the template context for the list of posts.
     ordering = ['-publication_date']
 
 # View for displaying a single blog post.
 class BlogPostDetailView(DetailView):
     model = BlogPost
     template_name = 'post_detail.html'
-    context_object_name = 'post'
+    context_object_name = 'post' # Specify the variable name in the template context for the single post.
 
 # View for adding a new admin blog post.
 class AdminPostView(CreateView):
