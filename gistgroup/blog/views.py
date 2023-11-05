@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View  # Import the View class
 from django.views.generic import (
     ListView, 
     DetailView, 
@@ -36,6 +37,15 @@ class AddCategoryView(CreateView):
     template_name = 'add_category.html'
     success_url = '/blog/'
 
+class CategoryView(View):
+    def get(self, request, section):
+        category_posts = BlogPost.objects.filter(category=section)
+        return render(request, 'categories.html', {'section': section.title(), 'category_posts': category_posts})
+
+#def CategoryView(request, section):
+#    category_posts = BlogPost.objects.filter(category=section)
+#    return render(request, 'categories.html', {'section': section, 'category_posts':category_posts})
+
 # View for updating an existing blog post as admin.
 class UpdatePostView(UpdateView):
     model = BlogPost
@@ -48,3 +58,5 @@ class DeletePostView(DetailView):
    template_name = 'admin_delete_post.html'
    context_object_name = 'post'
    success_url = reverse_lazy('index')
+
+

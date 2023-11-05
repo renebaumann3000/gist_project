@@ -7,21 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIST Group Berlin</title>
+    <title>Category</title>
 </head>
 <body>
-    <!-- Page Title -->
-    <h1>Welcome to our GIST Group Berlin</h1>
-    
-    <!-- Section Title for Blog Articles -->
-    <h2>Blog Articles</h2>
-    
-    <!-- List of Blog Posts -->
+    <!-- Blog Post Title -->
+    <h1>Category: {{ section }}</section></h1>
     <ul>
-        {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
+        {% for post in category_posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - <a href="{% url 'category' post.category %}">{{ post.category }}</a>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - {{ post.category }}
             
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
@@ -49,3 +44,4 @@
 </html>
 
 {% endblock %}
+
