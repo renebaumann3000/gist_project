@@ -7,6 +7,7 @@ from django.views.generic import (
     UpdateView, 
     DeleteView,
 )
+from django.utils.text import slugify
 from .models import BlogPost, Category
 from .forms import BlogPostForm, CategoryForm
 from django.urls import reverse_lazy
@@ -39,8 +40,8 @@ class AddCategoryView(CreateView):
 
 class CategoryView(View):
     def get(self, request, section):
-        category_posts = BlogPost.objects.filter(category=section)
-        return render(request, 'categories.html', {'section': section.title(), 'category_posts': category_posts})
+        category_posts = BlogPost.objects.filter(category=section.replace('-', ' '))
+        return render(request, 'categories.html', {'section': section.title().replace('-', ' '), 'category_posts': category_posts})
 
 #def CategoryView(request, section):
 #    category_posts = BlogPost.objects.filter(category=section)

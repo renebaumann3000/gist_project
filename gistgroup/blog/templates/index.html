@@ -21,7 +21,7 @@
         {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - <a href="{% url 'category' post.category %}">{{ post.category }}</a>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
             
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
