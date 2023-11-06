@@ -21,13 +21,13 @@
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
                 
-                Author: {{ post.author.first_name }} {{ post.author.last_name }} 
-                {{ post.publication_date }} 
+                Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Displaying the author's first and last name -->
+                {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
 
-                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
-                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
+                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
+                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
             </p>
 
             {% endif %}

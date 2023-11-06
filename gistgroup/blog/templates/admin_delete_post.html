@@ -11,9 +11,9 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
 
-    {% if user.pk == post.author.pk %}
+    {% if user.pk == post.author.pk %} <!-- Checking if the authenticated user is the author of the post -->
 
     <!-- Page Title -->
     <h1>Delete Post</h1>
@@ -25,22 +25,22 @@
     <!-- Delete Post Form -->
     <div class="form-group"></div>
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Adding a CSRF token for security -->
         
         <!-- Delete Button -->
         <button class="btn btn-danger">Delete Post</button>
     </form>
 
-    {% else %}
+    {% else %} <!-- If the authenticated user is not the author of the post -->
 
-    Not allowed!
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed to delete this post -->
 
     {% endif %}
 
 
-    {% else %}
+    {% else %} <!-- If the user is not authenticated -->
 
-    Not allowed!
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed to delete this post -->
 
     {% endif %}
 

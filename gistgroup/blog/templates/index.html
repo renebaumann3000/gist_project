@@ -21,20 +21,22 @@
         {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> <!-- Displaying the title of the blog post with a link to its detail page -->
+            - 
+            <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  <!-- Displaying the category of the blog post with a link to its category page -->
             
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
                 
-                Author: {{ post.author.first_name }} {{ post.author.last_name }} 
-                {{ post.publication_date }} 
+                Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Displaying the author's first and last name -->
+                {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
 
-                {% if user.pk == post.author.pk %}
+                {% if user.pk == post.author.pk %} <!-- Checking if the logged-in user is the author of the post -->
 
-                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
-                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
+                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
+                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
             </p>
 
             {% endif %}
@@ -43,7 +45,7 @@
             {% endif %}
             
             <!-- Blog Post Content -->
-            <p>{{ post.content }}</p>
+            <p>{{ post.content | safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
         </li>
         {% empty %}
         <!-- Displayed when there are no blog posts available -->

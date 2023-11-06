@@ -11,29 +11,30 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
 
     <!-- Page Title -->
     <h1>Add Blog Post</h1>
 
     <!-- Blog Post Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %}
+    <div class="form-group"></div> <!-- Creating a form group (empty in this case) -->
+    <form method="POST"> <!-- Creating a form with HTTP POST method -->
+        {% csrf_token %} <!-- Adding a CSRF token for security -->
         
         <!-- Render form fields as paragraphs -->
 
-        {{ form.media }}
+        {{ form.media }} <!-- Render form media (e.g., JavaScript or CSS files) -->
 
-        {{ form.as_p }}
+        {{ form.as_p }} <!-- Rendering form fields as paragraphs for a simple layout -->
         
         <!-- Submit Button -->
         <button class="btn btn-success">Post</button>
     </form>
 
-    {% else %}
+    {% else %} <!-- If the user is not authenticated -->
 
-    Not allowed!
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed -->
+
 
     {% endif %}
 

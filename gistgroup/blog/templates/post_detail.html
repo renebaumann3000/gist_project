@@ -12,20 +12,20 @@
 <body>
     <!-- Blog Post Title -->
 
-    <h1>{{ post.title }}</h1>
+    <h1>{{ post.title }}</h1> <!-- Displaying the title of the blog post -->
     
     <!-- Blog Post Author and Publication Date -->
     <p>
-        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} -
-        {{ post.publication_date }}
+        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - <!-- Displaying the author's first and last name -->
+        {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
 
-        {% if user.is_authenticated %}
-        {% if user.pk == post.author.pk %}
+        {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
+        {% if user.pk == post.author.pk %} <!-- Checking if the logged-in user is the author of the post -->
 
 
-        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
+        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
 
-        <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
+        <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
 
     </p>
     {% endif %}
@@ -33,7 +33,7 @@
     {% endif %}
     
     <!-- Blog Post Content -->
-    <p>{{ post.content|safe }}</p>
+    <p>{{ post.content|safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
 
     <!-- Link to Go Back to the Index Page -->
     <br/><br/>

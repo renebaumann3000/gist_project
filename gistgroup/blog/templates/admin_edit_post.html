@@ -11,8 +11,8 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
-    {% if user.pk == post.author.pk %}
+    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
+    {% if user.pk == post.author.pk %} <!-- Checking if the authenticated user is the author of the post -->
 
     <!-- Page Title -->
     <h1>Update Post: {{ post.pk }}</h1>
@@ -20,29 +20,28 @@
     <!-- Blog Post Update Form -->
     <div class="form-group"></div>
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Adding a CSRF token for security -->
         
-        <!-- Render form fields as paragraphs -->
 
-        {{ form.media }}
+        {{ form.media }} <!-- Render form media (e.g., JavaScript or CSS files) -->
 
 
-        {{ form.as_p }}
+        {{ form.as_p }} <!-- Rendering form fields as paragraphs for a simple layout -->
         
         <!-- Update Button -->
         <button class="btn btn-success">Update</button>
     </form>
 
-    {% else %}
+    {% else %} <!-- If the authenticated user is not the author of the post -->
 
-    Not allowed!
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed to update this post -->
 
-    {% endif %}
+    {% endif %} 
 
 
-    {% else %}
+    {% else %} <!-- If the user is not authenticated -->
 
-    Not allowed!
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed to update this post -->
 
     {% endif %}
 
