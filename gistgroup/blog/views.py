@@ -19,6 +19,12 @@ class BlogPostListView(ListView):
     context_object_name = 'posts' # Specify the variable name in the template context for the list of posts.
     ordering = ['-publication_date']
 
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(BlogPostListView, self).get_context_data(*args, **kwargs)
+        context["category_menu"] = category_menu
+        return context
+
 # View for displaying a single blog post.
 class BlogPostDetailView(DetailView):
     model = BlogPost
