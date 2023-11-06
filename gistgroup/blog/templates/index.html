@@ -45,6 +45,7 @@
             {% endif %}
             
             <!-- Blog Post Content -->
+            {{ post.snippet }}
             <p>{{ post.content | safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
         </li>
         {% empty %}

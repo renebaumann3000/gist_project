@@ -11,10 +11,11 @@ for item in categories:
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'content', 'category',] #user restricition deleted author need to test
+        fields = ['title', 'content', 'category', 'snippet'] #user restricition deleted author need to test
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=categories_list, attrs={'class': 'form-control'}),
             'author': forms.Select(attrs={'class': 'form-control'}),
         }
