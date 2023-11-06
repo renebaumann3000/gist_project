@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from datetime import datetime, date
 
+from ckeditor.fields import RichTextField
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
@@ -15,7 +17,8 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200) # Title of the blog post
-    content = models.TextField() # Content of the blog post
+    #content = models.TextField() # Content of the blog post
+    content = RichTextField(blank=True, null=True) # Content of the blog post
     author = models.ForeignKey(User, on_delete=models.CASCADE) # ForeignKey relationship with User model as the admin
     publication_date = models.DateField(auto_now_add=True) # Date the blog post was published
     category = models.CharField(max_length=200, default='news') # Category of the blog post

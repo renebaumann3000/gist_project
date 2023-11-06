@@ -22,6 +22,9 @@
         {% csrf_token %}
         
         <!-- Render form fields as paragraphs -->
+
+        {{ form.media }}
+
         {{ form.as_p }}
         
         <!-- Submit Button -->
