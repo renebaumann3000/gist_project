@@ -12,6 +12,9 @@ from .models import BlogPost, Category
 from .forms import BlogPostForm, CategoryForm
 from django.urls import reverse_lazy
 
+from django.contrib.auth.decorators import login_required #user restricition for posts need to test
+from django.utils.decorators import method_decorator #user restricition for posts need to test
+
 # View for listing all blog posts.
 class BlogPostListView(ListView):
     model = BlogPost  
@@ -32,10 +35,16 @@ class BlogPostDetailView(DetailView):
     context_object_name = 'post' # Specify the variable name in the template context for the single post.
 
 # View for adding a new admin blog post.
+
+@method_decorator(login_required, name='dispatch') #user restricition for posts need to test
 class AdminPostView(CreateView):
     model = BlogPost  
     form_class = BlogPostForm
     template_name = 'admin_post.html'
+
+    def form_valid(self, form): #user restricition for posts need to test
+        form.instance.author = self.request.user  # Set the author to the logged-in user
+        return super().form_valid(form)
 
 # View for adding a new category.
 class AddCategoryView(CreateView):
