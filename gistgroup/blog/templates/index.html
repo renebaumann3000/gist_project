@@ -31,9 +31,14 @@
 
                 {% if user.is_authenticated %}
 
+                {% if user.pk == post.author.pk %}
+
                 <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
                 <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
             </p>
+
+            {% endif %}
+
 
             {% endif %}
             

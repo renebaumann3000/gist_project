@@ -11,6 +11,7 @@
 </head>
 <body>
     <!-- Blog Post Title -->
+
     <h1>{{ post.title }}</h1>
     
     <!-- Blog Post Author and Publication Date -->
@@ -19,11 +20,15 @@
         {{ post.publication_date }}
 
         {% if user.is_authenticated %}
+        {% if user.pk == post.author.pk %}
+
 
         <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>
 
         <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>
+
     </p>
+    {% endif %}
 
     {% endif %}
     

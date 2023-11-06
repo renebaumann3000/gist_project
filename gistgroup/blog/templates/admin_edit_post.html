@@ -12,6 +12,7 @@
 <body>
 
     {% if user.is_authenticated %}
+    {% if user.pk == post.author.pk %}
 
     <!-- Page Title -->
     <h1>Update Post: {{ post.pk }}</h1>
@@ -27,6 +28,13 @@
         <!-- Update Button -->
         <button class="btn btn-success">Update</button>
     </form>
+
+    {% else %}
+
+    Not allowed!
+
+    {% endif %}
+
 
     {% else %}
 
