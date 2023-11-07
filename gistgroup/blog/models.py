@@ -14,6 +14,12 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.pk)]) # URL for accessing the detail view of this blog post
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200) # Title of the blog post
