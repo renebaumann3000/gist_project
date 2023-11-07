@@ -18,7 +18,7 @@
 
     <!-- Blog Post Form -->
     <div class="form-group"></div> <!-- Creating a form group (empty in this case) -->
-    <form method="POST"> <!-- Creating a form with HTTP POST method -->
+    <form method="POST" enctype="multipart/form-data"> <!-- Creating a form with HTTP POST method + added  enctype="multipart/form-data" for images -->
         {% csrf_token %} <!-- Adding a CSRF token for security -->
         
         <!-- Render form fields as paragraphs -->

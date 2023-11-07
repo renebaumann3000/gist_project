@@ -11,7 +11,7 @@ for item in categories:
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'content', 'category', 'snippet'] #user restricition deleted author need to test
+        fields = ['title', 'content', 'category', 'snippet', 'header_image'] #user restricition deleted author need to test
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),

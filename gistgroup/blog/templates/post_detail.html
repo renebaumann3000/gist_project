@@ -33,6 +33,9 @@
     {% endif %}
     
     <!-- Blog Post Content -->
+    {% if post.header_image %}
+    <img src="{{ post.header_image.url }}"> <!-- Displaying the content image of the blog post -->
+    {% endif %}
     <p>{{ post.content|safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
 
     <!-- Link to Go Back to the Index Page -->
