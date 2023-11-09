@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIST Group</title>
+</head>
+<body>
+
+    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
+
+{% if user.pk == profile.user.pk %}
+
+    <!-- Page Title -->
+    <h1>Edit Settings</h1>
+
+    <!-- Blog Post Form -->
+    <div class="form-group"></div> <!-- Creating a form group (empty in this case) -->
+    <form method="POST" enctype="multipart/form-data"> <!-- Creating a form with HTTP POST method + added  enctype="multipart/form-data" for images -->
+        {% csrf_token %} <!-- Adding a CSRF token for security -->
+        
+        <!-- Render form fields as paragraphs -->
+
+        {{ form.media }} <!-- Render form media (e.g., JavaScript or CSS files) -->
+        
+        <!-- Submit Button -->
+        <button class="btn btn-success">Update Profile</button>
+    </form>
+
+    {% else %} <!-- If the user is not authenticated -->
+
+    Not allowed! <!-- Displaying a message indicating that the user is not allowed -->
+
+
+    {% endif %}
+
+{% endif %}
+
+</body>
+</html>
+
+{% endblock %}

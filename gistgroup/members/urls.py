@@ -3,7 +3,8 @@ from .views import (
     UserRegistrationView, 
     UserEditView,
     PasswordsChangeView,
-    ProfilePageView
+    ProfilePageView,
+    EditProfilePageView
   )
 
 from django.contrib.auth import views as auth_views
@@ -14,4 +15,5 @@ urlpatterns = [
     # path('password/', auth_views.PasswordChangeView.as_view(template_name='registration/change_password.html')),
     path('password/', PasswordsChangeView.as_view(template_name='registration/change_password.html'), name='password_change'),
     path('<int:pk>/profile/', ProfilePageView.as_view(), name='profile_page'),
+    path('<int:pk>/edit_profile_page/', EditProfilePageView.as_view(), name='edit_profile_page'),
 ]    
