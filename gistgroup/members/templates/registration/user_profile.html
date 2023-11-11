@@ -1,41 +1,44 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling -->
 
-{% load static %}
+{% load static %}  <!-- Loading static to use static files -->
 
-{% block content %}
+{% block content %}  <!-- Content block for inserting specific content into the base template -->
 
+<!-- Page Title -->
 <h1>User Profile</h1>
 
-{{ page_member}}
+<!-- Displaying the user profile information -->
+{{ page_member }}
 
+<!-- User Profile Card -->
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
+        <!-- Checking if the user has a profile picture -->
         {% if page_member.profile_pic %}
-        <img src="{{ page_member.profile_pic.url }}" class="card-img">
+        <img src="{{ page_member.profile_pic.url }}" class="card-img">  <!-- Displaying the user's profile picture -->
         {% else %}
-
-        <img src="{% static 'blog/images/10015419.png' %}" class="card-img">
-
+        <img src="{% static 'blog/images/10015419.png' %}" class="card-img">  <!-- Displaying a default image if no profile picture is available -->
         {% endif %}
       </div>
       <div class="col-md-10">
         <div class="card-body">
-            <h5 class="card-title">{{ page_member.user.first_name }} {{ page_member.user.last_name }}</h5>
+          <!-- User's Name -->
+          <h5 class="card-title">{{ page_member.user.first_name }} {{ page_member.user.last_name }}</h5>
+          <!-- User's Bio -->
           <p class="card-text">{{ page_member.member.profile.bio }}</p>
+          <!-- Last Updated Information -->
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           
+          <!-- Conditional Link Based on Profile Availability -->
           {% if post.author.profile %}
-          <a href="{% url 'profile_page' page_member.pk %}">Profile Page</a>
+          <a href="{% url 'profile_page' page_member.pk %}">Profile Page</a>  <!-- Link to the user's profile page -->
           {% else %}
-          <a href="{% url 'post_detail' pk=post.pk %}">View Post</a>
+          <a href="{% url 'post_detail' pk=post.pk %}">View Post</a>  <!-- Link to view the user's post -->
           {% endif %}
-
-
-
         </div>
       </div>
     </div>
   </div>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->

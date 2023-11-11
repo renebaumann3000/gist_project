@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template -->
 
-{% block content %}
+{% block content %}  <!-- Starting the content block -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,42 +18,38 @@
     
     <!-- List of Blog Posts -->
     <ul>
-        {% for post in posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
+        {% for post in posts %} <!-- Looping through each blog post in the 'posts' queryset -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> <!-- Displaying the title of the blog post with a link to its detail page -->
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> <!-- Link to the post detail page -->
             - 
-            <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  <!-- Displaying the category of the blog post with a link to its category page -->
-            
+            <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  <!-- Link to the post's category page -->
+
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
-                
-                Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Displaying the author's first and last name -->
-                {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
+                Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Author's name -->
+                {{ post.publication_date }} <!-- Publication date of the post -->
 
-                {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
-
+                {% if user.is_authenticated %} <!-- Checking if user is logged in -->
                 {% if user.pk == post.author.pk %} <!-- Checking if the logged-in user is the author of the post -->
 
-                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
-                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
+                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the post -->
+                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the post -->
             </p>
 
-            {% endif %}
-
-
-            {% endif %}
+            {% endif %} <!-- End if for checking author -->
+            {% endif %} <!-- End if for checking user authentication -->
             
             <!-- Blog Post Content -->
             {{ post.snippet }} <!-- Displaying the snippet of the blog post -->
-            <p>{{ post.content | safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
+            <p>{{ post.content | safe }}</p> <!-- Displaying the content of the blog post with HTML rendering -->
         </li>
-        {% empty %}
-        <!-- Displayed when there are no blog posts available -->
+        {% empty %} <!-- In case there are no posts -->
         <li>No blog posts available.</li>
-        {% endfor %}
+        {% endfor %} <!-- End for loop for posts -->
     </ul>
 </body>
 </html>
 
-{% endblock %}
+{% endblock %} <!-- Ending the content block -->
+

@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template to ensure consistent layout and styling across the site -->
 
-{% block content %}
+{% block content %}  <!-- Defining the content block for specific content within the base template -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,21 +10,20 @@
     <title>GIST Group</title>
 </head>
 <body>
-    <!-- Page Title -->
+    <!-- Displaying the page title for login -->
     <h1>Login</h1>
 
-    <!-- Blog Post Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %}
-        
-        <!-- Render form fields as paragraphs -->
-        {{ form.as_p }}
-        
-        <!-- Submit Button -->
+    <!-- Login Form -->
+    <div class="form-group"></div>  <!-- Empty div for form group (can be used for styling or other purposes) -->
+    <form method="POST">  <!-- Form for submitting login data -->
+        {% csrf_token %}  <!-- CSRF token for form security -->
+
+        {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->
+
+        <!-- Submit button for the form -->
         <button class="btn btn-success">Login</button>
     </form>
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->

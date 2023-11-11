@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %}  <!-- Extends the base template for consistent layout and styling -->
+{% load static %}  <!-- Loads the static file tag to include static files -->
 
-{% block content %}
+{% block content %}  <!-- Content block that will be inserted into the base template -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,59 +12,50 @@
 </head>
 <body>
     <!-- Blog Post Title -->
+    <h1>{{ post.title }}</h1>  <!-- Displaying the blog post's title -->
 
-    <h1>{{ post.title }}</h1> <!-- Displaying the title of the blog post -->
-    
     <!-- Blog Post Author and Publication Date -->
     <p>
-        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - <!-- Displaying the author's first and last name -->
-        {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
+        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - <!-- Author's name -->
+        {{ post.publication_date }} <!-- Publication date -->
 
-        {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
-        {% if user.pk == post.author.pk %} <!-- Checking if the logged-in user is the author of the post -->
-
-
-        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
-
-        <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
-
+        <!-- Edit and Delete Links for Authenticated Users -->
+        {% if user.is_authenticated and user.pk == post.author.pk %} <!-- Checks if the user is authenticated and is the author -->
+        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the post -->
+        <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the post -->
+        {% endif %}
     </p>
-    {% endif %}
-
-    {% endif %}
     
     <!-- Blog Post Content -->
-    {% if post.header_image %}
-    <img src="{{ post.header_image.url }}"> <!-- Displaying the content image of the blog post -->
+    {% if post.header_image %} <!-- Checks if there is a header image -->
+    <img src="{{ post.header_image.url }}"> <!-- Displays the header image -->
     {% endif %}
-    <p>{{ post.content|safe }}</p> <!-- Displaying the content of the blog post and using the "safe" filter to render HTML content safely -->
+    <p>{{ post.content|safe }}</p> <!-- Displays the content of the post, rendering HTML safely -->
 
-    <!-- Link to Go Back to the Index Page -->
+    <!-- Back Button -->
     <br/><br/>
-    <a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+    <a href="{% url 'index' %}" class="btn btn-primary">Back</a> <!-- Link to go back to the index page -->
     <br/><br/>
 
+    <!-- Author Information Card -->
     <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-2">
-            {% if post.author.profile.profile_pic %}
-            <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
+            <!-- Author Profile Picture -->
+            {% if post.author.profile.profile_pic %} <!-- Checks if the author has a profile picture -->
+            <img src="{{ post.author.profile.profile_pic.url }}" class="card-img"> <!-- Displays the profile picture -->
             {% else %}
-
-            <img src="{% static 'blog/images/10015419.png' %}" class="card-img">
-
+            <img src="{% static 'blog/images/10015419.png' %}" class="card-img"> <!-- Displays a default image if no profile picture is available -->
             {% endif %}
           </div>
           <div class="col-md-10">
             <div class="card-body">
-              <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
-              <p class="card-text">{{ post.author.profile.bio }}</p>
+              <!-- Author Name and Bio -->
+              <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5> <!-- Author's full name -->
+              <p class="card-text">{{ post.author.profile.bio }}</p> <!-- Author's bio -->
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
-              <a href="{% url 'profile_page' post.author.profile.pk %}">Profile Page</a> |
-
-
-
+              <a href="{% url 'profile_page' post.author.profile.pk %}">Profile Page</a> <!-- Link to the author's profile page -->
             </div>
           </div>
         </div>
@@ -73,5 +64,4 @@
 </body>
 </html>
 
-{% endblock %}
-
+{% endblock %}  <!-- End of content block -->

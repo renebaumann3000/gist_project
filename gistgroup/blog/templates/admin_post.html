@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending the base template to maintain consistent layout and styling -->
 
-{% block content %}
+{% block content %}  <!-- Starting the content block where specific page content will be inserted -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,34 +11,32 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
+    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
 
-    <!-- Page Title -->
+    <!-- Displaying the page title for adding a blog post -->
     <h1>Add Blog Post</h1>
 
-    <!-- Blog Post Form -->
-    <div class="form-group"></div> <!-- Creating a form group (empty in this case) -->
-    <form method="POST" enctype="multipart/form-data"> <!-- Creating a form with HTTP POST method + added  enctype="multipart/form-data" for images -->
-        {% csrf_token %} <!-- Adding a CSRF token for security -->
-        
-        <!-- Render form fields as paragraphs -->
+    <!-- Form for adding a blog post -->
+    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+    <form method="POST" enctype="multipart/form-data">  <!-- Form for posting data with file upload capability -->
+        {% csrf_token %}  <!-- CSRF token for form security -->
 
-        {{ form.media }} <!-- Render form media (e.g., JavaScript or CSS files) -->
+        {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
+        {{ form.as_p }}  <!-- Rendering form fields as paragraphs -->
 
-        {{ form.as_p }} <!-- Rendering form fields as paragraphs for a simple layout -->
-        
-        <!-- Submit Button -->
+        <!-- Submit button for the form -->
         <button class="btn btn-success">Post</button>
     </form>
 
-    {% else %} <!-- If the user is not authenticated -->
+    {% else %}  <!-- Condition if the user is not authenticated -->
 
-    Not allowed! <!-- Displaying a message indicating that the user is not allowed -->
+    <!-- Displaying a message to unauthorized users -->
+    Not allowed!  
 
-
-    {% endif %}
+    {% endif %}  <!-- End of authentication check -->
 
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- Ending the content block -->
+

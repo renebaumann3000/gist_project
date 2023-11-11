@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extends the base template for consistent layout and styling -->
 
-{% block content %}
+{% block content %}  <!-- Content block that will be inserted into the base template -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,37 +11,35 @@
 </head>
 <body>
     <!-- Blog Post Title -->
-    <h1>Category: {{ section }}</section></h1>
+    <h1>Category: {{ section }}</h1>  <!-- Displaying the category name -->
+
+    <!-- List of Blog Posts in the Category -->
     <ul>
-        {% for post in category_posts %} <!-- Loop through each blog post in the 'posts' queryset/ reference context_object_name -->
+        {% for post in category_posts %}  <!-- Looping through each blog post in 'category_posts' -->
         <li> 
             <!-- Blog Post Title with Link to Detail Page -->
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - {{ post.category }}
-            
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> - {{ post.category }}  <!-- Link to the post's detail page and category -->
+
             <!-- Author, Publication Date, Edit, and Delete Links -->
             <p>
-                
-                Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Displaying the author's first and last name -->
-                {{ post.publication_date }} <!-- Displaying the publication date of the blog post -->
+                Author: {{ post.author.first_name }} {{ post.author.last_name }}  <!-- Displaying the author's name -->
+                {{ post.publication_date }}  <!-- Displaying the publication date -->
 
-                {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
-
-                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the blog post -->
-                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the blog post -->
+                {% if user.is_authenticated %}  <!-- Checking if user is logged in -->
+                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>  <!-- Link to edit the post -->
+                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>  <!-- Link to delete the post -->
+                {% endif %}
             </p>
 
-            {% endif %}
-            
             <!-- Blog Post Content -->
-            <p>{{ post.content }}</p>
+            <p>{{ post.content }}</p>  <!-- Displaying the content of the post -->
         </li>
-        {% empty %}
-        <!-- Displayed when there are no blog posts available -->
-        <li>No blog posts available.</li>
+        {% empty %}  <!-- In case there are no posts in the category -->
+        <li>No blog posts available.</li>  <!-- Displayed when there are no posts -->
         {% endfor %}
     </ul>
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of content block -->
 

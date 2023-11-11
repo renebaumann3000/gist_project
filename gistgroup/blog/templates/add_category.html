@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template to maintain consistent layout and styling across the site -->
 
-{% block content %}
+{% block content %}  <!-- Starting the content block where specific page content will be inserted -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,30 +11,30 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
 
-    <!-- Page Title -->
+    <!-- Displaying the page title for adding a new category -->
     <h1>Add Category</h1>
 
-    <!-- Blog Post Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %}
-        
-        <!-- Render form fields as paragraphs -->
-        {{ form.as_p }}
-        
-        <!-- Submit Button -->
+    <!-- Form for adding a new category -->
+    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+    <form method="POST">  <!-- Form for submitting the category data -->
+        {% csrf_token %}  <!-- CSRF token for form security -->
+
+        {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->
+
+        <!-- Submit button for the form -->
         <button class="btn btn-success">Add Category</button>
     </form>
 
-    {% else %}
+    {% else %}  <!-- If the user is not authenticated -->
 
+    <!-- Displaying a message indicating that the user is not authorized to add a category -->
     Not allowed!
 
-    {% endif %}
+    {% endif %}  <!-- End of authentication check -->
 
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->

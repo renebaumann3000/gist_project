@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
 
-{% block content %}
+{% block content %}  <!-- Defining the content block where specific page content will be inserted -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,23 +10,23 @@
     <title>GIST Group</title>
 </head>
 <body>
-    <!-- Page Title -->
+    <!-- Displaying the page title for editing the profile -->
     <h1>Edit Profile</h1>
 
+    <!-- Displaying the user's bio -->
     {{ user.profile.bio }}
 
-    <!-- Blog Post Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %}
-        
-        <!-- Render form fields as paragraphs -->
-        {{ form.as_p }}
-        
-        <!-- Submit Button -->
+    <!-- Form for Editing the Profile -->
+    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+    <form method="POST">  <!-- Form for submitting profile edit data -->
+        {% csrf_token %}  <!-- CSRF token for form security -->
+
+        {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->
+
+        <!-- Submit button for the form -->
         <button class="btn btn-success">Update Profile</button>
     </form>
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->
