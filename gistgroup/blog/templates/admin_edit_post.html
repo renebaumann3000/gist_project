@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
 
-{% block content %}
+{% block content %}  <!-- Defining the content block to insert specific content into the base template -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,41 +11,34 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
-    {% if user.pk == post.author.pk %} <!-- Checking if the authenticated user is the author of the post -->
+    {% if user.is_authenticated %}
+        {% if user.pk == post.author.pk %}  <!-- Checking if the logged-in user is the author of the post -->
 
-    <!-- Page Title -->
-    <h1>Update Post: {{ post.pk }}</h1>
+            <!-- Displaying the page title for updating the post -->
+            <h1>Update Post: {{ post.pk }}</h1>
+            <!-- Form for updating a blog post -->
+            <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+            <form method="POST">  <!-- Form for submitting post updates -->
+                {% csrf_token %}  <!-- CSRF token for form security -->
 
-    <!-- Blog Post Update Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %} <!-- Adding a CSRF token for security -->
-        
+                {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
+                {{ form.as_p }}  <!-- Rendering form fields as paragraphs for a simple layout -->
 
-        {{ form.media }} <!-- Render form media (e.g., JavaScript or CSS files) -->
+                <!-- Update button for the form -->
+                <button class="btn btn-success">Update</button>
+            </form>
 
-
-        {{ form.as_p }} <!-- Rendering form fields as paragraphs for a simple layout -->
-        
-        <!-- Update Button -->
-        <button class="btn btn-success">Update</button>
-    </form>
-
-    {% else %} <!-- If the authenticated user is not the author of the post -->
-
-    Not allowed! <!-- Displaying a message indicating that the user is not allowed to update this post -->
-
-    {% endif %} 
-
-
-    {% else %} <!-- If the user is not authenticated -->
-
-    Not allowed! <!-- Displaying a message indicating that the user is not allowed to update this post -->
-
-    {% endif %}
+        {% else %}  <!-- If the authenticated user is not the author of the post -->
+            <!-- Displaying a message indicating that the user is not authorized to update this post -->
+            Not allowed cause not author!
+        {% endif %}  <!-- End of authorship check -->
+    {% else %}  <!-- If the user is not authenticated -->
+        <!-- Displaying a message indicating that the user is not authorized to update this post -->
+        Not allowed cause auth!   
+    {% endif %}  <!-- End of authentication check -->
 
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->
+

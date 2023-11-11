@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
 
-{% block content %}
+{% block content %}  <!-- Defining the content block to insert specific content into the base template -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,40 +11,33 @@
 </head>
 <body>
 
-    {% if user.is_authenticated %} <!-- Checking if a user is authenticated (logged in) -->
+    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
+        {% if user.pk %}  <!-- Checking if the logged-in user is the author of the post -->
+            <!-- Displaying the page title for deleting the post -->
+            <h1>Delete Post</h1>
+            <br/><br/>
 
-    {% if user.pk == post.author.pk %} <!-- Checking if the authenticated user is the author of the post -->
+            <!-- Confirming the Title of the Post to be Deleted -->
+            <h3>Delete: {{ post.title }}</h3>
 
-    <!-- Page Title -->
-    <h1>Delete Post</h1>
-    <br/><br/>
-    
-    <!-- Display the Post Title to Confirm Deletion -->
-    <h3>Delete: {{ post.title }}</h3>
-    
-    <!-- Delete Post Form -->
-    <div class="form-group"></div>
-    <form method="POST">
-        {% csrf_token %} <!-- Adding a CSRF token for security -->
-        
-        <!-- Delete Button -->
-        <button class="btn btn-danger">Delete Post</button>
-    </form>
+            <!-- Form for Deleting a Blog Post -->
+            <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+            <form method="POST">  <!-- Form for submitting the delete request -->
+                {% csrf_token %}  <!-- CSRF token for form security -->
 
-    {% else %} <!-- If the authenticated user is not the author of the post -->
-
-    Not allowed! <!-- Displaying a message indicating that the user is not allowed to delete this post -->
-
-    {% endif %}
-
-
-    {% else %} <!-- If the user is not authenticated -->
-
-    Not allowed! <!-- Displaying a message indicating that the user is not allowed to delete this post -->
-
-    {% endif %}
+                <!-- Delete button for the form -->
+                <button class="btn btn-danger">Delete Post</button>
+            </form>
+        {% else %}  <!-- If the authenticated user is not the author of the post -->
+            <!-- Displaying a message indicating that the user is not authorized to delete this post -->
+            Not allowed!
+        {% endif %}  <!-- End of authorship check -->
+    {% else %}  <!-- If the user is not authenticated -->
+        <!-- Displaying a message indicating that the user is not authorized to delete this post -->
+        Not allowed!
+    {% endif %}  <!-- End of authentication check -->
 
 </body>
 </html>
 
-{% endblock %}
+{% endblock %}  <!-- End of the content block -->
