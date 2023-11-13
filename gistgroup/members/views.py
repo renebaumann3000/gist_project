@@ -74,3 +74,17 @@ class EditProfilePageView(generic.UpdateView):
     fields = ['bio', 'profile_pic', 'socialmedia_url']  # Fields to include in the form
     success_url = reverse_lazy('index')  # Redirect URL after successful profile update
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['treatment_log_form'] = TreatmentLogForm()  
+        return context
+
+    def form_valid(self, form):
+        # Handle saving the treatment logs form
+        treatment_log_form = TreatmentLogForm(self.request.POST)
+        if treatment_log_form.is_valid():
+
+            treatment_log = treatment_log_form.save(commit=False)
+            treatment_log.user = self.request.user
+            treatment_log.save()
+        return super().form_valid(form)
