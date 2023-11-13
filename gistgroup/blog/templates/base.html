@@ -28,59 +28,24 @@
 
           <!-- Home link in the navbar -->
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
           </li>
 
           <!-- Links displayed when user is authenticated -->
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'admin_post' %}">Admin Post</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
-          </li>
-
-          <!-- Logout link -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-          </li>
-
-          <!-- Profile dropdown menu -->
+          <!-- Admin Post dropdown menu -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
+              Admin Post
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
-              <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.pk %}">Edit Profile</a>
-              <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>
+              <a class="dropdown-item" href="{% url 'admin_post' %}">Admin Post</a>
+              <a class="dropdown-item" href="{% url 'add_category' %}">Add Category</a>
             </div>
           </li>
 
-          <!-- Edit profile and change password links -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
-          </li>
-
-          {% else %}
-
-          <!-- Links displayed when user is not authenticated -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-
-          {% endif %}
-          
-          <!-- Dropdown menu for categories -->
+           <!-- Dropdown menu for categories -->  
           {% if category_menu %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,13 +58,93 @@
             </div>
           </li>
           {% endif %}
+             
+          
+
+        <!--  <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin_post' %}">Admin Post</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
+          </li> -->
+
+          <!-- Logout link 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li> -->
+
+          <!-- Profile dropdown menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
+
+              {% if user.profile.pk %}
+
+               <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.pk %}">Edit Profile</a>
+               <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>
+              {% else %} 
+
+               <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
+
+              {% endif %}
+
+
+             <!-- <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>  -->
+            </div>
+          </li>
+
+          <!-- Edit profile and change password links -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
+          </li>
+
+          <!-- Logout link -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>          
+
+          {% else %}
+
+          <!-- Links displayed when user is not authenticated -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
         </ul>
 
-        <!-- Search form -->
+          {% endif %}
+          
+          <!-- Dropdown menu for categories
+          {% if category_menu %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for item in category_menu %}
+              <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a>
+              {% endfor %}
+            </div>
+          </li>
+          {% endif %}
+        </ul> -->
+
+        <!-- Search form
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </nav>
 

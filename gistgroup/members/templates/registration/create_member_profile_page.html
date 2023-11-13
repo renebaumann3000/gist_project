@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIST Group</title>
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+
+        <!-- Displaying the page title for creating the profile -->
+        <h1>Create your Profile</h1>
+
+        <!-- Form for creating a member profile -->
+        <div class="form-group"></div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Render the form fields as paragraphs for a simple layout -->
+            <button class="btn btn-success">Create Profile</button>
+        </form>
+
+    {% else %}
+
+        <!-- Displaying a message indicating that the user is not authenticated -->
+        You must be logged in to create a member profile.
+
+    {% endif %}
+
+</body>
+</html>
+{% endblock %}

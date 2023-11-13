@@ -1,42 +1,17 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
+{% extends 'base.html' %}
 
-{% block content %}  <!-- Starting the content block where specific page content will be inserted -->
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIST Group</title>
-</head>
-<body>
+<h1>Edit Profile Infos</h1>
 
-    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
-    {% if user.pk == profile.user.pk %}  <!-- Checking if the logged-in user is the owner of the profile -->
-
-    <!-- Displaying the page title for editing settings -->
-    <h1>Edit Settings</h1>
-
-    <!-- Form for Editing Profile Settings -->
-    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-    <form method="POST" enctype="multipart/form-data">  <!-- Form for posting data with file upload capability -->
-        {% csrf_token %}  <!-- CSRF token for form security -->
-
-        {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
-
-        <!-- Submit button for the form -->
-        <button class="btn btn-success">Update Profile</button>
+{% if user.is_authenticated and user.pk == profile.user.pk %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields here -->
+        <button type="submit" class="btn btn-success">Update Profile</button>
     </form>
-
-    {% else %}  <!-- If the logged-in user is not the owner of the profile -->
-
-    <!-- Displaying a message indicating that the user is not authorized -->
+{% else %}
     Not allowed!
+{% endif %}
 
-    {% endif %}  <!-- End of ownership check -->
-    {% endif %}  <!-- End of authentication check -->
-
-</body>
-</html>
-
-{% endblock %}  <!-- End of the content block -->
+{% endblock %}

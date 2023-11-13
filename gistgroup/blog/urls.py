@@ -22,8 +22,6 @@ urlpatterns = [
     # Route for displaying a single blog post detail, identified by its primary key (pk)
     path('post/<int:pk>/', BlogPostDetailView.as_view(), name='post_detail'),
 
-
- 
     # Route for an admin to add a new blog post
     path('admin_post/', AdminPostView.as_view(), name='admin_post'),
 

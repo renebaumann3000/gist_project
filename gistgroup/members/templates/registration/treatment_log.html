@@ -1,0 +1,47 @@
+{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling -->
+
+{% load static %}  <!-- Loading static to use static files -->
+
+{% block content %}  <!-- Content block for inserting specific content into the base template -->
+
+<!-- Page Title -->
+<h1>Treatment Log</h1>
+
+<!-- User's Treatment Logs -->
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">User: {{ user.username }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Treatment Logs:</h6>
+        
+        <!-- Display a table of treatment logs for the user -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Medication Name</th>
+                    <th>Dosage</th>
+                    <th>Side Effects</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in treatment_logs %}
+                    <tr>
+                        <td>{{ log.treatment_date }}</td>
+                        <td>{{ log.medication_name }}</td>
+                        <td>{{ log.dosage }}</td>
+                        <td>{{ log.side_effects }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No treatment logs available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Link to add a new treatment log -->
+<a href="{% url 'treatment_log' %}" class="btn btn-primary" role="button">Add Treatment Log</a>
+
+{% endblock %}  <!-- End of the content block -->

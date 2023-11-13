@@ -5,6 +5,9 @@ from datetime import datetime, date
 
 from ckeditor.fields import RichTextField  # Rich text editor field
 
+
+
+
 # Model representing a category
 class Category(models.Model):
     name = models.CharField(max_length=200)  # Name of the category
@@ -22,6 +25,7 @@ class Profile(models.Model):
     bio = models.TextField()  # Biography of the user
     profile_pic = models.ImageField(null=True, blank=True, upload_to="profile/images/")  # Profile picture
     socialmedia_url = models.CharField(max_length=200, blank=True, null=True)  # Social media URL
+    treatment_logs = models.ManyToManyField('TreatmentLog', blank=True)
 
     def __str__(self):
         return str(self.user)  # String representation of the user profile
@@ -43,4 +47,17 @@ class BlogPost(models.Model):
     def get_absolute_url(self):
         # URL for accessing the detail view of this blog post
         return reverse('post_detail', args=[str(self.pk)])
+
+
+# Model representing a treatment log
+class TreatmentLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    treatment_date = models.DateField()
+    medication_name = models.CharField(max_length=200)
+    dosage = models.CharField(max_length=100)
+    side_effects = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Treatment Log for {self.user.username} on {self.treatment_date}"
+
 
