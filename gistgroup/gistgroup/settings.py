@@ -33,7 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io', 
     '8000-renebaumann-gistproject-zwcypuyhm30.ws-eu106.gitpod.io',
-    'https://gistproject-9ab7b71712a2.herokuapp.com/', 'localhost']
+    'gistproject-9ab7b71712a2.herokuapp.com', 'localhost']
 
 # Trusted origin for Django Admin login -> Custom added
 CSRF_TRUSTED_ORIGINS = ['https://8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io',
