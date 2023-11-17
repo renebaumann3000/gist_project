@@ -26,15 +26,10 @@
           <!-- User's Name -->
           <h5 class="card-title">{{ page_member.user.first_name }} {{ page_member.user.last_name }}</h5>
           <!-- User's Bio -->
-          <p class="card-text">{{ page_member.member.profile.bio }}</p>
-          <!-- Last Updated Information -->
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          
+          <p class="card-text">{{ page_member.member.profile.bio }}</p>    
           <!-- Conditional Link Based on Profile Availability -->
-          {% if post.author.profile %}
+          {% if page_member.member.profile %}
           <a href="{% url 'profile_page' page_member.pk %}">Profile Page</a>  <!-- Link to the user's profile page -->
-          {% else %}
-          <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary" role="button">Read More</a>  <!-- Link to view the user's post -->
           {% endif %}
         </div>
       </div>
@@ -44,7 +39,7 @@
   <!-- Displaying Treatment Logs -->
 <h2>Treatment Logs</h2>
 <ul>
-    {% for log in page_member.member.profile.treatment_logs.all %}
+    {% for log in treatment_logs %}
     <li>{{ log.medication_name }} - {{ log.treatment_date }}</li>
     <p>Dosage: {{ log.dosage }}</p>
     {% if log.side_effects %}
@@ -54,13 +49,5 @@
     <p>No treatment logs available.</p>
     {% endfor %}
 </ul>
-
-<!-- Treatment Log Form Section -->
-<h2>Add Treatment Log</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ treatment_log_form.as_p }}
-    <button type="submit" class="btn btn-primary">Add Log</button>
-</form>
 
 {% endblock %}  <!-- End of the content block -->

@@ -25,7 +25,6 @@ class Profile(models.Model):
     bio = models.TextField()  # Biography of the user
     profile_pic = models.ImageField(null=True, blank=True, upload_to="profile/images/")  # Profile picture
     socialmedia_url = models.CharField(max_length=200, blank=True, null=True)  # Social media URL
-    treatment_logs = models.ManyToManyField('TreatmentLog', blank=True)
 
     def __str__(self):
         return str(self.user)  # String representation of the user profile

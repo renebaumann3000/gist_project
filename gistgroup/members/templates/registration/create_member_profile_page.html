@@ -17,7 +17,7 @@
 
         <!-- Form for creating a member profile -->
         <div class="form-group"></div>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}  <!-- Render the form fields as paragraphs for a simple layout -->
             <button class="btn btn-success">Create Profile</button>

@@ -18,7 +18,7 @@ urlpatterns = [
     path('edit_profile/', UserEditView.as_view(), name='edit_profile'),  # Maps to UserEditView for handling profile edits
 
     # URL pattern for changing password using custom view
-    path('password/', PasswordsChangeView.as_view(template_name='registration/change_password.html'), name='change_password'),  # Maps to PasswordsChangeView for password changes with a specific template
+    path('password/', PasswordsChangeView.as_view(), name='change_password'),  # Maps to PasswordsChangeView for password changes with a specific template
 
     # URL pattern for viewing a user's profile
     path('<int:pk>/profile/', ProfilePageView.as_view(), name='profile_page'),  # Maps to ProfilePageView for displaying a specific user's profile, using user's primary key (pk)

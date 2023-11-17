@@ -82,28 +82,13 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
 
-              {% if user.profile.pk %}
-
+              {% if user.profile %}
                <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.pk %}">Edit Profile</a>
                <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>
-              {% else %} 
-
-               <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
-
               {% endif %}
 
-
-             <!-- <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>  -->
+               <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
             </div>
-          </li>
-
-          <!-- Edit profile and change password links -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
           </li>
 
           <!-- Logout link -->
@@ -115,7 +100,7 @@
 
           <!-- Links displayed when user is not authenticated -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
           </li>
 
           <li class="nav-item">

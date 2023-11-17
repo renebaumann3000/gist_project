@@ -25,11 +25,13 @@ class CreateProfilePageView(CreateView):
     model = Profile
     form_class = ProfilePageForm
     template_name = 'registration/create_member_profile_page.html'
-    field = '__all__'
+    success_url = reverse_lazy('index')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        self.object.user = self.request.user
+        self.object.save()
+        return response
 
 # View for editing user profile
 class UserEditView(generic.UpdateView):
@@ -58,13 +60,9 @@ class ProfilePageView(DetailView):
 
         post = BlogPost.objects.filter(author=self.request.user).first()
         context["post"] = post  # Add the specific blog post to the context
-
-        # Retrieve and pass the treatment logs for the user
         treatment_logs = TreatmentLog.objects.filter(user=self.request.user)
         context["treatment_logs"] = treatment_logs
-        context["treatment_log_form"] = TreatmentLogForm()
-
-
+        
         return context
 
 # View for editing user's profile page
@@ -75,8 +73,23 @@ class EditProfilePageView(generic.UpdateView):
     success_url = reverse_lazy('index')  # Redirect URL after successful profile update
 
     def get_context_data(self, *args, **kwargs):
+        print('this is the edit profile page view')
         context = super().get_context_data(*args, **kwargs)
-        context['treatment_log_form'] = TreatmentLogForm()  
+        treatment_log_form = TreatmentLogForm()
+        # Retrieve and pass the treatment logs for the user
+        treatment_logs = TreatmentLog.objects.filter(user=self.request.user)
+        context["treatment_logs"] = treatment_logs
+        treatment_log_form = TreatmentLogForm()
+        if treatment_logs:
+            latest_log = treatment_logs.first()
+            latest_log_content = {
+                'treatment_date': latest_log.treatment_date,
+                'medication_name': latest_log.medication_name,
+                'dosage': latest_log.dosage,
+                'side_effects': latest_log.side_effects
+            }
+            treatment_log_form = TreatmentLogForm(initial=latest_log_content, auto_id=False)
+        context['treatment_log_form'] = treatment_log_form
         return context
 
     def form_valid(self, form):
