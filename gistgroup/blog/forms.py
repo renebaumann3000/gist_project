@@ -1,14 +1,7 @@
 from django import forms
 from .models import BlogPost, Category
 
-# Retrieving all categories and converting them into a list of tuples
-categories = Category.objects.all().values_list('name', 'name')
-
-categories_list_old = []
-
 # Appending each category tuple to the categories list
-for item in categories:
-    categories_list_old.append(item)
 
 # Form for creating or editing a BlogPost (idea that no server restart is needed when addin a category)
 #class BlogPostForm(forms.ModelForm):
