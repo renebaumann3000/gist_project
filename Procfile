@@ -1,1 +1,1 @@
-web: gunicorn gistgroup.gistgroup.wsgi
+web: gunicorn gistgroup.wsgi
