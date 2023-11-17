@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 print(os.getcwd())
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gistgroup.gistgroup.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gistgroup.settings')
 
 application = get_wsgi_application()
