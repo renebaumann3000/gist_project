@@ -12,31 +12,35 @@
 <body>
 
     {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
+        {% if user.profile %}  <!-- Checking if the user has a profile -->
 
-    <!-- Displaying the page title for adding a blog post -->
-    <h1>Add Blog Post</h1>
+            <!-- Displaying the page title for adding a blog post -->
+            <h1>Add Blog Post</h1>
 
-    <!-- Form for adding a blog post -->
-    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-    <form method="POST" enctype="multipart/form-data">  <!-- Form for posting data with file upload capability -->
-        {% csrf_token %}  <!-- CSRF token for form security -->
+            <!-- Form for adding a blog post -->
+            <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
+            <form method="POST" enctype="multipart/form-data">  <!-- Form for posting data with file upload capability -->
+                {% csrf_token %}  <!-- CSRF token for form security -->
 
-        {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
-        {{ form.as_p }}  <!-- Rendering form fields as paragraphs -->
+                {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
+                {{ form.as_p }}  <!-- Rendering form fields as paragraphs -->
 
-        <!-- Submit button for the form -->
-        <button class="btn btn-success">Post</button>
-    </form>
+                <!-- Submit button for the form -->
+                <button class="btn btn-success">Post</button>
+            </form>
+
+        {% else %}  <!-- Condition if the user does not have a profile -->
+            <p>Please create a profile.</p>  <!-- Prompting the user to create a profile -->
+        {% endif %}  <!-- End of profile check -->
 
     {% else %}  <!-- Condition if the user is not authenticated -->
-
-    <!-- Displaying a message to unauthorized users -->
-    Not allowed!  
-
+        <!-- Displaying a message to unauthorized users -->
+        Not allowed!  
     {% endif %}  <!-- End of authentication check -->
 
 </body>
 </html>
 
 {% endblock %}  <!-- Ending the content block -->
+
 

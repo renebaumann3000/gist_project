@@ -26,7 +26,11 @@
           <!-- User's Name -->
           <h5 class="card-title">{{ page_member.user.first_name }} {{ page_member.user.last_name }}</h5>
           <!-- User's Bio -->
-          <p class="card-text">{{ page_member.member.profile.bio }}</p>    
+          <p class="card-text">{{ page_member.bio }}</p>
+
+          <p class="card-text">{{ page_member.socialmedia_url }}</p>
+
+  
           <!-- Conditional Link Based on Profile Availability -->
           {% if page_member.member.profile %}
           <a href="{% url 'profile_page' page_member.pk %}">Profile Page</a>  <!-- Link to the user's profile page -->

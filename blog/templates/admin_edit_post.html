@@ -18,7 +18,7 @@
             <h1>Update Post: {{ post.pk }}</h1>
             <!-- Form for updating a blog post -->
             <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-            <form method="POST">  <!-- Form for submitting post updates -->
+            <form method="POST" enctype="multipart/form-data">  <!-- Adding enctype for file upload -->
                 {% csrf_token %}  <!-- CSRF token for form security -->
 
                 {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
@@ -41,4 +41,5 @@
 </html>
 
 {% endblock %}  <!-- End of the content block -->
+
 

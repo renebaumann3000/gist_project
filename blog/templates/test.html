@@ -1,50 +1,22 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
+                <!-- Blog Post Title with Link to Detail Page -->
+                <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3> <!-- Link to the post detail page -->
+                - 
+                <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>  <!-- Link to the post's category page -->
 
-{% block content %}  <!-- Defining the content block to insert specific content into the base template -->
+                <!-- Author, Publication Date, Edit, and Delete Links -->
+                <p>
+                    Author: {{ post.author.first_name }} {{ post.author.last_name }} <!-- Author's name -->
+                    {{ post.publication_date }} <!-- Publication date of the post -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIST Group</title>
-</head>
-<body>
+                    {% if user.is_authenticated %} <!-- Checking if user is logged in -->
+                    {% if user.pk == post.author.pk %} <!-- Checking if the logged-in user is the author of the post -->
 
-    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
-    {% if user.pk == post.author.pk %}  <!-- Checking if the logged-in user is the author of the post -->
+                    <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a> <!-- Link to edit the post -->
+                    <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a> <!-- Link to delete the post -->
+                </p>
 
-    <!-- Displaying the page title for updating the post -->
-    <h1>Update Post: {{ post.pk }}</h1>
-
-    <!-- Form for updating a blog post -->
-    <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-    <form method="POST">  <!-- Form for submitting post updates -->
-        {% csrf_token %}  <!-- CSRF token for form security -->
-
-        {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
-        {{ form.as_p }}  <!-- Rendering form fields as paragraphs for a simple layout -->
-
-        <!-- Update button for the form -->
-        <button class="btn btn-success">Update</button>
-    </form>
-
-    {% else %}  <!-- If the authenticated user is not the author of the post -->
-
-    <!-- Displaying a message indicating that the user is not authorized to update this post -->
-    Not allowed cause not author!
-
-    {% endif %}  <!-- End of authorship check -->
-
-    {% else %}  <!-- If the user is not authenticated -->
-
-    <!-- Displaying a message indicating that the user is not authorized to update this post -->
-    Not allowed cause auth!
-
-    {% endif %}  <!-- End of authentication check -->
-
-</body>
-</html>
-
-{% endblock %}  <!-- End of the content block -->
-
+                {% endif %} <!-- End if for checking author -->
+                {% endif %} <!-- End if for checking user authentication -->
+                
+                <!-- Blog Post Content -->
+                {{ post.snippet }} <!-- Displaying the snippet of the blog post -->

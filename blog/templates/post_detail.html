@@ -37,29 +37,29 @@
     <a href="{% url 'index' %}" class="btn btn-primary">Back</a> <!-- Link to go back to the index page -->
     <br/><br/>
 
-    <!-- Author Information Card -->
-    <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-md-2">
-            <!-- Author Profile Picture -->
-            {% if post.author.profile.profile_pic %} <!-- Checks if the author has a profile picture -->
-            <img src="{{ post.author.profile.profile_pic.url }}" class="card-img"> <!-- Displays the profile picture -->
-            {% else %}
-            <img src="{% static 'blog/images/10015419.png' %}" class="card-img"> <!-- Displays a default image if no profile picture is available -->
-            {% endif %}
-          </div>
-          <div class="col-md-10">
-            <div class="card-body">
-              <!-- Author Name and Bio -->
-              <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5> <!-- Author's full name -->
-              <p class="card-text">{{ post.author.profile.bio }}</p> <!-- Author's bio -->
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-              <a href="{% url 'profile_page' post.author.profile.pk %}">Profile Page</a> <!-- Link to the author's profile page -->
+    <!-- Display Author Information Card only for authenticated users -->
+    {% if user.is_authenticated %}
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-2">
+                    <!-- Author Profile Picture -->
+                    {% if post.author.profile.profile_pic %}
+                    <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
+                    {% else %}
+                    <img src="{% static 'blog/images/10015419.png' %}" class="card-img">
+                    {% endif %}
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <!-- Author Name and Bio -->
+                        <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+                        <p class="card-text">{{ post.author.profile.bio }}</p>
+                        <a href="{% url 'profile_page' post.author.profile.pk %}">Profile Page</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    {% endif %}
 
 </body>
 </html>
