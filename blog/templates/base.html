@@ -83,15 +83,16 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
-
+          
               {% if user.profile %}
-               <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.pk %}">Edit Profile</a>
-               <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>
+                <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.pk %}">Edit Profile</a>
+                <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+                <a class="dropdown-item" href="{% url 'profile_page' user.profile.pk %}">Show Profile Page</a>
+              {% else %}
+                <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
               {% endif %}
-
-               <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
             </div>
-          </li> 
+          </li>
 
           <!-- Members dropdown menu -->
           <li class="nav-item dropdown">

@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIST Group</title>
+    <title>Edit Profile Settings</title>
 </head>
 <body>
     <!-- Displaying the page title for editing the profile -->
@@ -21,7 +21,29 @@
     <form method="POST">  <!-- Form for submitting profile edit data -->
         {% csrf_token %}  <!-- CSRF token for form security -->
 
-        {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->
+        <!-- Display username -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        
+        <!-- Display email -->
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </div>
+        
+        <!-- Display first name -->
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.first_name }}
+        </div>
+        
+        <!-- Display last name -->
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.last_name }}
+        </div>
 
         <!-- Submit button for the form -->
         <button class="btn btn-success">Update Profile</button>
