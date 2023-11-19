@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Member Profiles</h2>
+    <ul>
+    {% for profile in profiles %}
+        <li><a href="{% url 'profile_page' profile.pk %}">{{ profile.user.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

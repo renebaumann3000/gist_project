@@ -93,6 +93,16 @@
             </div>
           </li> 
 
+          <!-- Members dropdown menu -->
+          <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMembers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Members
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdownMembers">
+             <a class="dropdown-item" href="{% url 'member_profiles' %}">Member Profiles</a>
+           </div>
+          </li>
+
           <!-- Logout link -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>

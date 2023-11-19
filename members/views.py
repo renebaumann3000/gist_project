@@ -101,3 +101,8 @@ class EditProfilePageView(generic.UpdateView):
             treatment_log.user = self.request.user
             treatment_log.save()
         return super().form_valid(form)
+
+
+def member_profiles_view(request):
+    profiles = Profile.objects.all()  # Get all profiles
+    return render(request, 'members/profile_list.html', {'profiles': profiles})
