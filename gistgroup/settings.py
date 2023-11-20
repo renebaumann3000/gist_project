@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io', 
     '8000-renebaumann-gistproject-zwcypuyhm30.ws-eu106.gitpod.io',
