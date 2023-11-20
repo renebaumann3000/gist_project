@@ -27,10 +27,7 @@
           <h5 class="card-title">{{ page_member.user.first_name }} {{ page_member.user.last_name }}</h5>
           <!-- User's Bio -->
           <p class="card-text">Bio: {{ page_member.bio }}</p>
-
           <p class="card-text">Social Media URL: {{ page_member.socialmedia_url }}</p>
-
-  
           <!-- Conditional Link Based on Profile Availability -->
           {% if page_member.member.profile %}
           <a href="{% url 'profile_page' page_member.pk %}">Profile Page</a>  <!-- Link to the user's profile page -->
@@ -40,18 +37,21 @@
     </div>
   </div>
 
-  <!-- Displaying Treatment Logs -->
-<h2>Treatment Logs</h2>
-<ul>
-    {% for log in treatment_logs %}
-    <li>{{ log.medication_name }} - {{ log.treatment_date }}</li>
-    <p>Dosage: {{ log.dosage }}</p>
-    {% if log.side_effects %}
-    <p>Side Effects: {{ log.side_effects }}</p>
-    {% endif %}
-    {% empty %}
-    <p>No treatment logs available.</p>
-    {% endfor %}
-</ul>
+  <!-- Conditional Rendering of Treatment Logs -->
+  {% if user.is_authenticated and user == page_member.user %}
+  <h2>Treatment Logs</h2>
+  <ul>
+      {% for log in treatment_logs %}
+      <li>{{ log.medication_name }} - {{ log.treatment_date }}</li>
+      <p>Dosage: {{ log.dosage }}</p>
+      {% if log.side_effects %}
+      <p>Side Effects: {{ log.side_effects }}</p>
+      {% endif %}
+      {% empty %}
+      <p>No treatment logs available.</p>
+      {% endfor %}
+  </ul>
+  {% endif %}
 
 {% endblock %}  <!-- End of the content block -->
+

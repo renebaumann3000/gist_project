@@ -152,7 +152,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/' # custom added
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # custom added
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # custom added
 # custom added
 
 
