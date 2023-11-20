@@ -21,7 +21,7 @@
             <form method="POST" enctype="multipart/form-data">  <!-- Adding enctype for file upload -->
                 {% csrf_token %}  <!-- CSRF token for form security -->
 
-                {{ form.media }}  <!-- Inserting form media (if any, like JavaScript or CSS specific to the form) -->
+              <!--  {{ form.media }}  Inserting form media (if any, like JavaScript or CSS specific to the form) -->
                 {{ form.as_p }}  <!-- Rendering form fields as paragraphs for a simple layout -->
 
                 <!-- Update button for the form -->
