@@ -32,6 +32,8 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ['8000-renebaumann-gistproject-zwcypuyhm30.ws-eu105.gitpod.io', 
     '8000-renebaumann-gistproject-zwcypuyhm30.ws-eu106.gitpod.io',
     'gistproject-9ab7b71712a2.herokuapp.com', 'localhost']
