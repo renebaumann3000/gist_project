@@ -1,46 +1,93 @@
-{% extends 'base.html' %}  <!-- Extending the base template to maintain consistent layout and styling -->
+{% extends 'base.html' %}
 
-{% block content %}  <!-- Starting the content block where specific page content will be inserted -->
-
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIST Group</title>
+
+    <!-- Include Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    
+    <!-- Add CSS to hide the content form field -->
+    <style>
+        #id_content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-    {% if user.is_authenticated %}  <!-- Checking if the user is authenticated (logged in) -->
-        {% if user.profile %}  <!-- Checking if the user has a profile -->
+    {% if user.is_authenticated %}
+        {% if user.profile %}
 
-            <!-- Displaying the page title for adding a blog post -->
             <h1>Add Blog Post</h1>
 
-            <!-- Form for adding a blog post -->
-            <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-            <form method="POST" enctype="multipart/form-data">  <!-- Form for posting data with file upload capability -->
-                {% csrf_token %}  <!-- CSRF token for form security -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">Title:</label>
+                    {{ form.title }}
+                </div>
 
-                 <!--  form.media   Inserting form media (if any, like JavaScript or CSS specific to the form) -->
-                {{ form.as_p }}  <!-- Rendering form fields as paragraphs -->
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">Category:</label>
+                    {{ form.category }}
+                </div>
+
+                <!-- Quill editor for the content field -->
+                <div class="form-group">
+                    <label for="quill-editor">Content:</label>
+                    <div id="quill-editor"></div>
+                    <p>Enter the detailed content for your blog post here:</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.snippet.id_for_label }}">Snippet:</label>
+                    {{ form.snippet }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.header_image.id_for_label }}">Image Upload:</label>
+                    {{ form.header_image }}
+                </div>
+
+                <!-- Render the content form field (hidden) -->
+                {{ form.content }}
 
                 <!-- Submit button for the form -->
                 <button class="btn btn-success">Post</button>
             </form>
 
-        {% else %}  <!-- Condition if the user does not have a profile -->
-            <p>Please create a profile.</p>  <!-- Prompting the user to create a profile -->
-        {% endif %}  <!-- End of profile check -->
+            <!-- Include Quill JavaScript -->
+            <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+            <script>
+                var quill = new Quill('#quill-editor', {
+                    theme: 'snow',
+                });
 
-    {% else %}  <!-- Condition if the user is not authenticated -->
-        <!-- Displaying a message to unauthorized users -->
-        Not allowed!  
-    {% endif %}  <!-- End of authentication check -->
+                // Set the initial content from the form field
+                quill.root.innerHTML = '{{ form.content.value|default:''|escapejs|safe }}';
+
+                // Update the hidden 'content' field with Quill editor content when changes occur
+                quill.on('text-change', function() {
+                    var contentInput = document.querySelector('#id_content');
+                    contentInput.value = quill.root.innerHTML;
+                });
+            </script>
+
+        {% else %}
+            <p>Please create a profile.</p>
+        {% endif %}
+
+    {% else %}
+        Not allowed!
+    {% endif %}
 
 </body>
 </html>
-
-{% endblock %}  <!-- Ending the content block -->
-
+{% endblock %}
 

@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'blog', # Custom added
     'members', # Custom added
     'ckeditor', # Custom added
+    'django_quill',
 ]
 
 MIDDLEWARE = [
