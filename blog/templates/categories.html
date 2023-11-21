@@ -26,13 +26,19 @@
                 {{ post.publication_date }}  <!-- Displaying the publication date -->
 
                 {% if user.is_authenticated %}  <!-- Checking if user is logged in -->
-                <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>  <!-- Link to edit the post -->
-                <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>  <!-- Link to delete the post -->
+                    {% if user == post.author %}  <!-- Check if the logged-in user is the author of the post -->
+                        <a href="{% url 'admin_edit_post' pk=post.pk %}">Edit</a>  <!-- Link to edit the post -->
+                        <a href="{% url 'admin_delete_post' pk=post.pk %}">Delete</a>  <!-- Link to delete the post -->
+                    {% endif %}
                 {% endif %}
             </p>
 
             <!-- Blog Post Content -->
-            <p>{{ post.content }}</p>  <!-- Displaying the content of the post -->
+            <div>
+                {% autoescape off %}
+                    {{ post.content|safe }}
+                {% endautoescape %}
+            </div>
         </li>
         {% empty %}  <!-- In case there are no posts in the category -->
         <li>No blog posts available.</li>  <!-- Displayed when there are no posts -->
@@ -42,4 +48,5 @@
 </html>
 
 {% endblock %}  <!-- End of content block -->
+
 

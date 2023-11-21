@@ -52,7 +52,7 @@ class AddCategoryView(CreateView):
     model = Category  # Specify the model for category creation
     form_class = CategoryForm  # Form for creating a category
     template_name = 'add_category.html'  # Template for the creation form
-    success_url = '/blog/'  # URL to redirect after successful creation
+    success_url = reverse_lazy('index')  # URL to redirect after successful creation
 
 # View for displaying posts by category
 def CategoryView(request, section):
