@@ -372,6 +372,348 @@ The code leverages Django's built-in authentication system and forms.
 
 - Decorators like login_required are used to enforce authentication and authorization for specific views.
 
+## Feature Testing + CX Issues
+
+### Index
+
+<details>
+<summary>
+Testing Index
+</summary>
+
+![index](/documentation/assets/index.JPG "index")
+
+### W3C Validator
+
+![index_w3c](/documentation/assets/index_w3c.JPG "index_w3c")
+
+### CSS Validator
+
+![index_css](/documentation/assets/index_css.JPG "index_css")
+
+### Lighthouse Desktop
+
+![index_desktop](/documentation/assets/index_desktop.JPG "index_desktop")
+
+### Lighthouse Mobile
+
+![index_mobile](/documentation/assets/index_mobile.JPG "index_mobile")
+
+</details>
+
+### Sign Up
+
+<details>
+<summary>
+Testing Sign Up
+</summary>
+
+![signup](/documentation/assets/signup.JPG "signup")
+
+### W3C Validator
+
+![signup_w3c](/documentation/assets/signup_w3c.JPG "signup_w3c")
+
+### CSS Validator
+
+![signup_css](/documentation/assets/signup_css.JPG "signup_css")
+
+### Lighthouse Desktop
+
+![signup_desktop](/documentation/assets/signup_desktop.JPG "signup_desktop")
+
+### Lighthouse Mobile
+
+![signup_mobile](/documentation/assets/index_mobile.JPG "signup_mobile")
+
+</details>
+
+### Login
+
+<details>
+<summary>
+Testing Login
+</summary>
+
+![login](/documentation/assets/login.JPG "login")
+
+### W3C Validator
+
+![login_w3c](/documentation/assets/login_w3c.JPG "login_w3c")
+
+### CSS Validator
+
+![login_css](/documentation/assets/login_css.JPG "login_css")
+
+### Lighthouse Desktop
+
+![login_desktop](/documentation/assets/login_desktop.JPG "login_desktop")
+
+### Lighthouse Mobile
+
+![login_mobile](/documentation/assets/login_mobile.JPG "login_mobile")
+
+</details>
+
+### Create Profile
+
+<details>
+<summary>
+Testing Create Profile
+</summary>
+
+![create](/documentation/assets/create.JPG "create")
+
+### W3C Validator
+
+![create_w3c](/documentation/assets/create_w3c.JPG "create_w3c")
+
+### CSS Validator
+
+![create_css](/documentation/assets/create_css.JPG "create_css")
+
+### Lighthouse Desktop
+
+![create_desktop](/documentation/assets/create_desktop.JPG "create_desktop")
+
+### Lighthouse Mobile
+
+![create_mobile](/documentation/assets/create_mobile.JPG "create_mobile")
+
+### Security Message
+
+![post_message](/documentation/assets/post_message.JPG "post_message")
+
+### Default Image
+
+![default](/documentation/assets/default.JPG "default")
+
+</details>
+
+### User Profile
+
+<details>
+<summary>
+Testing User Profile functions
+</summary>
+
+### User Profile
+
+![treatment](/documentation/assets/treatment.JPG "treatment")
+
+### W3C Validator
+
+![profile_w3c](/documentation/assets/profile_w3c.JPG "profile_w3c")
+
+### CSS Validator
+
+![profile_css](/documentation/assets/profile_css.JPG "profile_css")
+
+### Lighthouse Desktop
+
+![profile_desktop](/documentation/assets/profile_desktop.JPG "profile_desktop")
+
+### Lighthouse Mobile
+
+![profile_mobile](/documentation/assets/profile_mobile.JPG "profile_mobile")
+
+### Edit Settings
+
+![settings](/documentation/assets/settings.JPG "settings")
+
+### W3C Validator
+
+![settings_w3c](/documentation/assets/settings_w3c.JPG "settings_w3c")
+
+### CSS Validator
+
+![settings_css](/documentation/assets/settings_css.JPG "settings_css")
+
+### Lighthouse Desktop
+
+![settings_desktop](/documentation/assets/settings_desktop.JPG "settings_desktop")
+
+### Lighthouse Mobile
+
+![settings_mobile](/documentation/assets/settings_mobile.JPG "settings_mobile")
+
+### Change Password
+
+![password](/documentation/assets/password.JPG "password")
+
+### W3C Validator
+
+![password_w3c](/documentation/assets/password_w3c.JPG "password_w3c")
+
+### CSS Validator
+
+![password_css](/documentation/assets/password_css.JPG "password_css")
+
+### Lighthouse Desktop
+
+![password_desktop](/documentation/assets/password_desktop.JPG "password_desktop")
+
+### Lighthouse Mobile
+
+![password_mobile](/documentation/assets/password_mobile.JPG "password_mobile")
+
+### Edit Profile Infos
+
+![infos](/documentation/assets/infos.JPG "infos")
+
+### W3C Validator
+
+![info_w3c](/documentation/assets/info_w3c.JPG "info_w3c")
+
+### CSS Validator
+
+![info_css](/documentation/assets/info_css.JPG "info_css")
+
+### Lighthouse Desktop
+
+![info_desktop](/documentation/assets/password_desktop.JPG "info_desktop")
+
+### Lighthouse Mobile
+
+![info_mobile](/documentation/assets/password_mobile.JPG "info_mobile")
+
+</details>
+
+### Blog Posts
+
+<details>
+<summary>
+Testing Blog Posts
+</summary>
+
+### Posts view for unregistred users (without author)
+
+![auth_not](/documentation/assets/auth_not.JPG "auth_not")
+
+### Posts view for registred users (with author)
+
+![auth](/documentation/assets/auth.JPG "auth")
+
+### W3C Validator
+
+![article_w3c](/documentation/assets/article_w3c.JPG "article_w3c")
+
+### CSS Validator
+
+![article_css](/documentation/assets/article_css.JPG "article_css")
+
+### Lighthouse Desktop
+
+![article_desktop](/documentation/assets/article_desktop.JPG "article_desktop")
+
+### Lighthouse Mobile
+
+![article_mobile](/documentation/assets/article_mobile.JPG "article_mobile")
+
+### Add Blog Post
+
+![post](/documentation/assets/post.JPG "post")
+
+### Default Image
+
+![post_default](/documentation/assets/post_default.JPG "post_default")
+
+### W3C Validator
+
+![post_w3c](/documentation/assets/post_w3c.JPG "post_w3c")
+
+### CSS Validator
+
+![post_css](/documentation/assets/post_css.JPG "post_css")
+
+### Lighthouse Desktop
+
+![post_desktop](/documentation/assets/post_desktop.JPG "post_desktop")
+
+### Lighthouse Mobile
+
+![post_mobile](/documentation/assets/post_mobile.JPG "post_mobile")
+
+### Security Message
+
+![post_security](/documentation/assets/post_security.JPG "post_security")
+
+### Delete Post
+
+![delete](/documentation/assets/delete.JPG "delete")
+
+### W3C Validator
+
+![delete_w3c](/documentation/assets/delete_w3c.JPG "delete_w3c")
+
+### CSS Validator
+
+![delete_css](/documentation/assets/delete_css.JPG "delete_css")
+
+### Lighthouse Desktop
+
+![delete_desktop](/documentation/assets/delete_desktop.JPG "delete_desktop")
+
+### Lighthouse Mobile
+
+![delete_mobile](/documentation/assets/delete_mobile.JPG "delete_mobile")
+
+### Security Message
+
+![delete_auth](/documentation/assets/delete_auth.JPG "delete_auth")
+
+</details>
+
+### Categorys
+
+<details>
+<summary>
+Testing Categorys
+</summary>
+
+### Category View
+
+![category_view](/documentation/assets/category_view.JPG "category_view")
+
+### W3C Validator
+
+![category_w3c](/documentation/assets/category_w3c.JPG "category_w3c")
+
+### CSS Validator
+
+![category_css](/documentation/assets/category_css.JPG "category_css")
+
+### Lighthouse Desktop
+
+![category_desktop](/documentation/assets/category_desktop.JPG "category_desktop")
+
+### Lighthouse Mobile
+
+![category_mobile](/documentation/assets/category_mobile.JPG "category_mobile")
+
+### Add Category
+
+![add](/documentation/assets/add.JPG "add")
+
+### W3C Validator
+
+![add_w3c](/documentation/assets/add_w3c.JPG "add_w3c")
+
+### CSS Validator
+
+![add_css](/documentation/assets/add_css.JPG "add_css")
+
+### Lighthouse Desktop
+
+![add_desktop](/documentation/assets/add_desktop.JPG "add_desktop")
+
+### Lighthouse Mobile
+
+![add_mobile](/documentation/assets/add_mobile.JPG "add_mobile")
+
+</details>
+
+
 
 
 
