@@ -38,7 +38,8 @@ Treatment logs are associated with user profiles. The Treatment Log works like a
 ### Members Section:
 
 A dedicated "Members" section allows users to view a list of registered members.
-Member profiles are displayed with profile pictures and usernames.
+Member profiles are displayed with profile pictures and usernames. At this time, the GIST group uses an Excel sheet for sharing the contact data of the group members.
+The member section should be the better digital approach here.
 
 ### Security and Privacy:
 
@@ -61,7 +62,7 @@ Use the Quill rich text editor to enable users to format and style their blog po
 
 User are able to upload images to their profile and to the blog articles.
 
-## Features left to implement (because it's a real life project, these features are really planend):
+## Features left to implement (because it's a real life project, these features are really planend for the next 6-12 months):
 
 - For sure, the contact form!
 - GDPR related options that allows the user to download the own data
@@ -155,7 +156,7 @@ At the beginning of the project, I discussed his idea for the website with the g
 ### Design decisions:
 
 the initial plan was to use minimalistic CSS to keep the site clear and simple.
-Unfortunately, most of the time was spent on functionality. Therefore, the website consists of simple CSS tables and a gray Bootstrap navbar. The buttons follow a simple logic: blue for readmore, yellow for edit and red for delete.
+Unfortunately, most of the time was spent on functionality. Therefore, the website consists of simple CSS tables and a gray Bootstrap navbar. The buttons follow a simple logic: blue for readmore, yellow for edit and red for delete. For the basic design I used Bootstrap and CSS Form styles.
 
 ## Database Design
 
@@ -373,6 +374,60 @@ The code leverages Django's built-in authentication system and forms.
 - Decorators like login_required are used to enforce authentication and authorization for specific views.
 
 ## Feature Testing + CX Issues
+
+Please see the testing sections for the site pages. I want to mention some CX issues here.
+
+![testing](/documentation/assets/testing.JPG "testing")
+
+#### CX issues:
+
+- the Categorys are not accessable in the navbar from all views.
+- the Admin Post is called because of the future use. The admin should post the group related infos. Other users could also post but in the separate "Members" section.
+- No error message, if a user name already exists.
+
+#### Success messages:
+Starting out in software development, I learned that creating success messages wasn't part of the initial release of our project, and now I understand the reasons behind this.
+
+Writing the User Stories: In the beginning, I was focused on what the user absolutely needed — the core functionalities like posting, signing up, and editing. At that stage, the finer details, like user feedback through success messages, didn't seem as critical to me.
+
+Writing the Functions: When I moved into the coding phase, my goal was to get those key features to work. I put my energy into ensuring you could actually create, edit, and delete a blog post. To my beginner's mind, success messages were an additional feature, not a necessity.
+
+Debugging: Debugging was where I spent a lot of time making sure everything functioned as intended. It was a process of solving one problem after another, and during that time, adding success messages felt like something I could do later.
+
+Testing on Localhost: Testing was done by me, for me. Since I knew exactly how the system was supposed to work, when a blog post was successfully deleted, I didn't need a message to confirm it — but I didn't account for the fact that users wouldn't have that same insight.
+
+Testing after Deployment: Once the project was live, I began to observe how real users interacted with the website. That's when the absence of success messages became apparent. What I thought was intuitive wasn't as clear to the users.
+
+The project was racing against a deadline, and I had to make decisions on what to prioritize. As a beginner, I chose to ensure that the system's basic functionalities were robust and stable, which I deemed most critical.
+
+Documentation was another area where I spent considerable time. It's essential for the long-term health of the project, so I prioritized completing it over adding user experience enhancements.
+
+In retrospect, I see that focusing on stability and core functionality before implementing user niceties like success messages was the right call. Now that I have a stable product, I can go back and implement those success messages. Each step has been a lesson in prioritization and managing project constraints, lessons that are invaluable for a student like me just starting out in this field.
+
+#### W3C Validator:
+
+In the initial stages of development, I started off by crafting what I believed were standard HTML templates. Not yet experienced enough to foresee the complexities ahead, I didn't realize that the W3C validator would read the base layout and the individual page templates separately.
+
+As I worked through the project, I constructed the site's pages using Django's template inheritance, which allows for a "base" template that contains common elements like the header and footer. Each page then extends this base, adding its own specific content. This is a powerful feature of Django, enabling me to write DRY (Don't Repeat Yourself) code and maintain consistency across the site.
+
+However, this approach led to an unexpected challenge with the W3C validator. It's designed to validate plain HTML and isn't aware of Django's templating mechanics. So when it reads the base template and a child template together, it sees them as two separate HTML documents instead of parts of a whole. This results in validation errors, as the validator doesn't understand that these templates will be combined into a single, well-formed HTML document when Django renders them.
+
+With the deadline near, the realization hit me: fixing these errors by adjusting the template structure could introduce risks. If I were to alter the templates to appease the validator, I'd need to retest every page to make sure nothing broke in the process. That's a significant amount of additional work and not feasible given the time constraints.
+
+Choosing to prioritize the functioning and delivery of the project, I've had to accept these validation errors for now. It's not ideal, and as a developer committed to best practices, I intend to address these errors after the deadline. I'll look into ways to make the templates compliant without compromising the benefits of Django's template inheritance.
+
+This has been a valuable learning experience for me. It's taught me about the intricacies of template validation and the importance of balancing code quality with practical project constraints. As I continue to grow in this field, I'll take this knowledge forward to build more robust and standards-compliant websites.
+
+#### Python Linter:
+
+When I began coding, I wasn't completely aware of Python's style conventions, like the recommended line lengths from PEP 8, Python's official style guide. It recommends keeping lines of code under a certain length for better readability. However, as a beginner, I was more concerned with writing code that executed correctly rather than strictly adhering to style guidelines.
+
+As the project progressed, my Python files grew in both number and complexity. I started to see warnings about long lines and other style issues, but by then, the codebase had become quite extensive. Realizing the magnitude of the task, I faced the reality that fixing all these style issues would be a significant undertaking. Given the intricate web of Django's app structure, each Python file contains a piece of the larger puzzle, from views and models to forms and utility scripts.
+
+Now, with the deadline for the project approaching, I have to make strategic choices. Refactoring the code to fix style issues would mean combing through numerous files and lines of code, and it would also require retesting to ensure nothing was inadvertently broken during the cleanup process. It's a time-consuming task that, while important for maintainability and readability, isn't as critical as ensuring the website functions correctly for its users.
+
+Therefore, I've made the decision to prioritize the website's functionality and user experience over code styling for the time being. The Python code, while not perfectly styled, works, and it meets the users' needs. After the deadline, when there's more breathing room, I plan to gradually refactor the code. I'll improve its adherence to PEP 8, enhancing the readability and maintainability for future developers and for myself.
+
 
 ### Index
 
@@ -713,6 +768,34 @@ Testing Categorys
 
 </details>
 
+### Members Section
+
+<details>
+<summary>
+Testing Members Section
+</summary>
+
+### Members Profiles
+
+![members_profiles](/documentation/assets/members_profiles.JPG "members_profiles")
+
+### W3C Validator
+
+![members_w3c](/documentation/assets/members_w3c.JPG "members_w3c")
+
+### CSS Validator
+
+![members_css](/documentation/assets/members_css.JPG "members_css")
+
+### Lighthouse Desktop
+
+![members_desktop](/documentation/assets/category_desktop.JPG "members_desktop")
+
+### Lighthouse Mobile
+
+![members_mobile](/documentation/assets/category_mobile.JPG "members_mobile")
+
+</details>
 
 
 

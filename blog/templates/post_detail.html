@@ -1,7 +1,7 @@
-{% extends 'base.html' %}  <!-- Extends the base template for consistent layout and styling -->
-{% load static %}  <!-- Loads the static file tag to include static files -->
+{% extends 'base.html' %}  
+{% load static %}  
 
-{% block content %}  <!-- Content block that will be inserted into the base template -->
+{% block content %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +12,12 @@
 </head>
 <body>
     <!-- Blog Post Title -->
-    <h1>{{ post.title }}</h1>  <!-- Displaying the blog post's title -->
+    <h1>{{ post.title }}</h1>  
 
-    <!-- Blog Post Author and Publication Date -->
+ 
     <p>
-        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - <!-- Author's name -->
-        {{ post.publication_date }} <!-- Publication date -->
+        <strong>Author:</strong> {{ post.author.first_name }} {{ post.author.last_name }} - 
+        {{ post.publication_date }} 
 
         <!-- Edit and Delete Links for Authenticated Users -->
         {% if user.is_authenticated and user.pk == post.author.pk %} <!-- Checks if the user is authenticated and is the author -->
@@ -32,7 +32,6 @@
     {% endif %}
     <p>{{ post.content|safe }}</p> <!-- Displays the content of the post, rendering HTML safely -->
 
-    <!-- Back Button -->
     <br/><br/>
     <a href="{% url 'index' %}" class="btn btn-primary">Back</a> <!-- Link to go back to the index page -->
     <br/><br/>
@@ -64,4 +63,4 @@
 </body>
 </html>
 
-{% endblock %}  <!-- End of content block -->
+{% endblock %} 

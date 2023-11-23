@@ -1,6 +1,6 @@
-{% extends 'base.html' %}  <!-- Extending from the base template to ensure consistent layout and styling across the site -->
+{% extends 'base.html' %} 
 
-{% block content %}  <!-- Defining the content block for specific content within the base template -->
+{% block content %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +14,8 @@
     <h1>Login</h1>
 
     <!-- Login Form -->
-    <div class="form-group"></div>  <!-- Empty div for form group (can be used for styling or other purposes) -->
-    <form method="POST">  <!-- Form for submitting login data -->
+    <div class="form-group"></div> 
+    <form method="POST">  >
         {% csrf_token %}  <!-- CSRF token for form security -->
 
         {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->
@@ -26,4 +26,4 @@
 </body>
 </html>
 
-{% endblock %}  <!-- End of the content block -->
+{% endblock %} 

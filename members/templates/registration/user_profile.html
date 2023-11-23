@@ -1,16 +1,13 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling -->
+{% extends 'base.html' %} 
+{% load static %} 
 
-{% load static %}  <!-- Loading static to use static files -->
+{% block content %} 
 
-{% block content %}  <!-- Content block for inserting specific content into the base template -->
-
-<!-- Page Title -->
 <h1>User Profile</h1>
 
 <!-- Displaying the user profile information -->
 {{ page_member }}
 
-<!-- User Profile Card -->
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
@@ -53,5 +50,5 @@
   </ul>
   {% endif %}
 
-{% endblock %}  <!-- End of the content block -->
+{% endblock %} 
 

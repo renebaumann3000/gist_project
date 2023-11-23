@@ -1,10 +1,8 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling -->
+{% extends 'base.html' %}  
+{% load static %}  
 
-{% load static %}  <!-- Loading static to use static files -->
+{% block content %}  
 
-{% block content %}  <!-- Content block for inserting specific content into the base template -->
-
-<!-- Page Title -->
 <h1>Treatment Log</h1>
 
 <!-- User's Treatment Logs -->
@@ -44,4 +42,4 @@
 <!-- Link to add a new treatment log -->
 <a href="{% url 'treatment_log' %}" class="btn btn-primary" role="button">Add Treatment Log</a>
 
-{% endblock %}  <!-- End of the content block -->
+{% endblock %} 

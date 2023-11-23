@@ -7,7 +7,7 @@
 {% if user.is_authenticated and user.pk == profile.user.pk %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Render the form fields here -->
+        {{ form.as_p }} 
 
         <h2>Treatment Log</h2>
         {{ treatment_log_form.as_p }}

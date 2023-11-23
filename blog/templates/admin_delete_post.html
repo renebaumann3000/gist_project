@@ -1,6 +1,6 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
+{% extends 'base.html' %}  
 
-{% block content %}  <!-- Defining the content block to insert specific content into the base template -->
+{% block content %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@
 
             <!-- Form for Deleting a Blog Post -->
             <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-            <form method="POST">  <!-- Form for submitting the delete request -->
+            <form method="POST"> 
                 {% csrf_token %}  <!-- CSRF token for form security -->
 
                 <!-- Delete button for the form -->
@@ -40,4 +40,4 @@
 </body>
 </html>
 
-{% endblock %}  <!-- End of the content block -->
+{% endblock %} 

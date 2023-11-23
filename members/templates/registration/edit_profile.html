@@ -1,6 +1,6 @@
-{% extends 'base.html' %}  <!-- Extending from the base template for consistent layout and styling across the site -->
+{% extends 'base.html' %}  
 
-{% block content %}  <!-- Defining the content block where specific page content will be inserted -->
+{% block content %} 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
 
     <!-- Form for Editing the Profile -->
     <div class="form-group"></div>  <!-- Empty div for form group (for styling or future use) -->
-    <form method="POST">  <!-- Form for submitting profile edit data -->
+    <form method="POST">  
         {% csrf_token %}  <!-- CSRF token for form security -->
 
         <!-- Display username -->
@@ -51,4 +51,4 @@
 </body>
 </html>
 
-{% endblock %}  <!-- End of the content block -->
+{% endblock %} 
