@@ -424,6 +424,8 @@ Please see below the testing sections for the site pages. I want to mention some
 - the Categorys are not accessable in the navbar from all views.
 - the Admin Post is called because of the future use. The admin should post the group related infos. Other users could also post but in the separate "Members" section.
 - No error message, if a user name already exists.
+- by updating a post, the category is not prefilled
+- the text editor field is a bit small
 
 #### Success messages:
 Starting out in software development, I learned that creating success messages wasn't part of the initial release of our project, and now I understand the reasons behind this.
@@ -742,6 +744,28 @@ Testing Blog Posts + W3C Validator + CSS Validator + Lighthouse
 ### Security Message
 
 ![post_security](/documentation/assets/post_security.JPG "post_security")
+
+### Edit Blog Post
+
+![edit1](/documentation/assets/edit1.JPG "edit1")
+
+![edit1](/documentation/assets/edit2.JPG "edit2")
+
+### W3C Validator
+
+![edit_w3c](/documentation/assets/edit_w3c.JPG "edit_w3c")
+
+### CSS Validator
+
+![edit_css](/documentation/assets/edit_css.JPG "edit_css")
+
+### Lighthouse Desktop
+
+![edit_desktop](/documentation/assets/edit_desktop.JPG "edit_desktop")
+
+### Lighthouse Mobile
+
+![edit_mobile](/documentation/assets/edit_mobile.JPG "edit_mobile")
 
 ### Delete Post
 
