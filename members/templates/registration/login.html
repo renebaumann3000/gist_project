@@ -15,7 +15,7 @@
 
     <!-- Login Form -->
     <div class="form-group"></div> 
-    <form method="POST">  >
+    <form method="POST">
         {% csrf_token %}  <!-- CSRF token for form security -->
 
         {{ form.as_p }}  <!-- Rendering the form fields as paragraphs for a simple layout -->

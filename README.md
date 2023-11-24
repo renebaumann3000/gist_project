@@ -44,7 +44,8 @@ The member section should be the better digital approach here.
 ### Security and Privacy:
 
 User authentication ensures secure access to profile and blog management features.
-Users can log out to secure their sessions.
+Users can log out to secure their sessions. 
+Author profiles are only for registred users visiable.
 
 ### Public Accessibility:
 
@@ -61,6 +62,10 @@ Use the Quill rich text editor to enable users to format and style their blog po
 ### Image Upload:
 
 User are able to upload images to their profile and to the blog articles.
+
+### Default Images:
+
+Default images are automatically created for the user profile and articles if no own images are uploaded.
 
 ## Features left to implement (because it's a real life project, these features are really planend for the next 6-12 months):
 
@@ -171,6 +176,7 @@ It handles user information such as username, password, email, first and last na
 It is used to authenticate users and manage their access rights within the application.
 
 #### Profile Model:
+
 - Extends the User Model by establishing a one-to-one relationship, meaning each user has a single corresponding profile.
 
 - Stores additional user-specific information like bio, profile picture, and social media URLs.
@@ -373,9 +379,32 @@ The code leverages Django's built-in authentication system and forms.
 
 - Decorators like login_required are used to enforce authentication and authorization for specific views.
 
+#### Special case Add Post + Edit Post HTML Templates:
+
+First I had integrated the CKEditor for the rich text. Unfortunately, this caused problems after deploying with Cloudinary.
+I was looking for a quick and easy solution and found the Quill Editor. In the original code, I could no longer realize a simple exchange due to the deadline, so I used a workaround.
+
+- Quill Text Editor:
+
+Quill is a rich text editor, and the code includes the Quill CSS and JavaScript files from a CDN.
+It creates a Quill editor instance in a "div" with the id quill-editor to allow users to enter rich text content for blog posts.
+
+- Content Field Hiding:
+
+A "style" block hides the content form field with the id id_content. This is likely done to replace the default content input with the Quill editor and sync the content between them using JavaScript.
+
+- Hidden Content Field:
+
+The template includes a hidden content field ({{ form.content }}) that stores the rich text content entered in the Quill editor. This field is initially hidden but is updated using JavaScript to match the content in the Quill editor.
+JavaScript:
+
+- The JavaScript code included at the end of the template initializes the Quill editor, sets its initial content, and listens for text changes in the editor. When changes occur, it updates the hidden content form field with the Quill editor's content.
+
 ## Feature Testing + CX Issues
 
-Please see the testing sections for the site pages. I want to mention some CX issues here.
+#### User Story testing results:
+
+Please see below the testing sections for the site pages. I want to mention some CX issues here. I also put the W3C + CSS + Lighthouse testing screenshots in the related sections, to have a better page by page overview.
 
 ![testing](/documentation/assets/testing.JPG "testing")
 
@@ -418,6 +447,8 @@ Choosing to prioritize the functioning and delivery of the project, I've had to 
 
 This has been a valuable learning experience for me. It's taught me about the intricacies of template validation and the importance of balancing code quality with practical project constraints. As I continue to grow in this field, I'll take this knowledge forward to build more robust and standards-compliant websites.
 
+The user-related pages for the profile and the posts cannot be read by the validator for security reasons. In future, it would be better to handle it in a similar way to Facebook. If an attempt is made to hack a page, there should be a redirect to the login.
+
 #### Python Linter:
 
 When I began coding, I wasn't completely aware of Python's style conventions, like the recommended line lengths from PEP 8, Python's official style guide. It recommends keeping lines of code under a certain length for better readability. However, as a beginner, I was more concerned with writing code that executed correctly rather than strictly adhering to style guidelines.
@@ -433,7 +464,7 @@ Therefore, I've made the decision to prioritize the website's functionality and 
 
 <details>
 <summary>
-Testing Index
+Testing Index + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ![index](/documentation/assets/index.JPG "index")
@@ -460,7 +491,7 @@ Testing Index
 
 <details>
 <summary>
-Testing Sign Up
+Testing Sign Up + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ![signup](/documentation/assets/signup.JPG "signup")
@@ -487,7 +518,7 @@ Testing Sign Up
 
 <details>
 <summary>
-Testing Login
+Testing Login + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ![login](/documentation/assets/login.JPG "login")
@@ -514,7 +545,7 @@ Testing Login
 
 <details>
 <summary>
-Testing Create Profile
+Testing Create Profile + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ![create](/documentation/assets/create.JPG "create")
@@ -549,7 +580,7 @@ Testing Create Profile
 
 <details>
 <summary>
-Testing User Profile functions
+Testing User Profile functions + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ### User Profile
@@ -638,7 +669,7 @@ Testing User Profile functions
 
 <details>
 <summary>
-Testing Blog Posts
+Testing Blog Posts + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ### Posts view for unregistred users (without author)
@@ -723,7 +754,7 @@ Testing Blog Posts
 
 <details>
 <summary>
-Testing Categorys
+Testing Categorys + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ### Category View
@@ -772,7 +803,7 @@ Testing Categorys
 
 <details>
 <summary>
-Testing Members Section
+Testing Members Section + W3C Validator + CSS Validator + Lighthouse
 </summary>
 
 ### Members Profiles
@@ -797,6 +828,11 @@ Testing Members Section
 
 </details>
 
+### Responsive Design (using Chrome dev tools)
+
+![responsive](/documentation/assets/responsive.JPG "responsive")
+
+![responsive2](/documentation/assets/responsive2.JPG "responsive2")
 
 
 
