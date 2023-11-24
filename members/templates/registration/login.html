@@ -12,6 +12,11 @@
 <body>
     <!-- Displaying the page title for login -->
     <h1>Login</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <span class="badge badge-success">{{ message }}</span>
+        {% endfor %}
+    {% endif %}
 
     <!-- Login Form -->
     <div class="form-group"></div> 

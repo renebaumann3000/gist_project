@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.views.generic import DetailView, CreateView
@@ -15,10 +18,11 @@ from blog.models import TreatmentLog
 
 
 # View for user registration
-class UserRegistrationView(generic.CreateView):
+class UserRegistrationView(SuccessMessageMixin, generic.CreateView):
     form_class = SignUpForm 
     template_name = 'registration/register.html'
-    success_url = reverse_lazy('login') 
+    success_url = '/members/login/'
+    success_message = "Your account was created successfully. You can now log in."
 
 
 class CreateProfilePageView(CreateView):

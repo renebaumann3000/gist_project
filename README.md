@@ -6,6 +6,12 @@ Attention: the group is based in Berlin Germay, so some blog posts are in german
 
 - Live Website: https://gistproject-9ab7b71712a2.herokuapp.com/
 
+First test with my mother. She posted her tattoo on the blog:
+
+![tattoo](/documentation/assets/tattoo.JPG "tattoo")
+
+
+
 ## Self-Reflection:
 I begin this README with a self-reflection to clarify the status of the project. The technical aspect of this project has been overwhelming for me, almost pushing me to give up. It was difficult to understand that virtually all files have vise versa dependencies. I also lost track at some point in the never-ending war of error messages. What does this line actually do again?
 Why did I write it like that 14 days ago? For this reason, I also commented on many lines in order to somehow keep an overview... I would have preferred a more intensive "tandem" for learning purposes for this project. Fortunately, my network helped me with debugging and was there for me during an emotionally difficult time. I started with the PP4 walkthrough. For me personally, understanding the Django settings was challenging from the outset. It's like trying to learn how to drive a car. In the first driving lesson, before you even start driving, you have to tinker with the engine. As a beginner. Without any warning... Therefore, I sought my own way in and tried various other tutorials that worked better for me as an introduction to a Django project. Since the technical part of the project was difficult for me, I have not been able to fully complete the project by writing writing these lines. The design is not yet complete, and some features are not implemented. I will comment on the specific things in the respective sections.
@@ -13,7 +19,8 @@ I don't know if this project will be a fail. But the really good thing is that i
 
 ## Features:
 
-(Please see the testing section for screenshots. I will point out there the relevant infos and related issues)
+(Please see the testing section for screenshots. I will point out there the relevant infos and related issues.
+There are so many screenshots in this readme that it makes sense to have the website screenshots and the testings in one section for a better overview.)
 
 ### User Authentication and Profiles:
 
@@ -669,7 +676,7 @@ Testing User Profile functions + W3C Validator + CSS Validator + Lighthouse
 
 </details>
 
-### Blog Posts
+### Blog Posts (write, edtit, delete)
 
 <details>
 <summary>
@@ -704,7 +711,7 @@ Testing Blog Posts + W3C Validator + CSS Validator + Lighthouse
 
 ![post](/documentation/assets/post.JPG "post")
 
-### Default Image
+### Default Image + Edit
 
 ![post_default](/documentation/assets/post_default.JPG "post_default")
 
@@ -935,13 +942,13 @@ Copy the database URL from the instance details.
 
 - Copy the API Environment variable from the Cloudinary dashboard.
 
-In env.py, set 
+- In env.py, set:
 - os.environ["CLOUDINARY_URL"] = "< copied_variable" >, 
 - removing CLOUDINARY_URL= from the string.
 
-Add this variable to Heroku config vars as CLOUDINARY_URL.
+- Add this variable to Heroku config vars as CLOUDINARY_URL.
 
-In settings.py, under INSTALLED_APPS, add cloudinary_storage above django.contrib.staticfiles and cloudinary below it.
+- In settings.py, under INSTALLED_APPS, add: cloudinary_storage above django.contrib.staticfiles and cloudinary below it.
 
 - Define Cloudinary for static file storage:
 
