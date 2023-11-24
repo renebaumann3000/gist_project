@@ -85,6 +85,7 @@ Default images are automatically created for the user profile and articles if no
 - Feature to download the Treatment Log
 - Search function
 - easy overview for sort and filter posts for index + user posts
+- Resize uploaded images
 
 ## UX/ UI Site Goals (the group already announced on the blog a colloboration with the german "Sarkome Foundation" and the "Charité")
 
@@ -885,7 +886,8 @@ Python Linter Testing
 - Sign in to Heroku and access the Dashboard.
 Select "New" and choose "Create new app" from the dropdown menu.
 Name the app suitably, select a relevant region, and click "Create App".
-Creating a PostgreSQL Database with ElephantSQL
+
+#### Creating a PostgreSQL Database with ElephantSQL
 
 - This step is crucial for setting up a Heroku-accessible database, as Django's default database isn't compatible with deployed Heroku apps.
 
@@ -895,7 +897,8 @@ Choose a plan (e.g., the free "Tiny Turtle" plan), provide a Name (project name)
 Review your choices and click "Create Instance."
 Back in the Dashboard, click on your new instance's name.
 Copy the database URL from the instance details.
-Securing Sensitive Information
+
+#### Securing Sensitive Information
 
 - Create an env.py file and add it to the .gitignore.
 - In env.py, import os and set the DATABASE_URL environment variable with the URL from ElephantSQL. 
