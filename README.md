@@ -444,6 +444,14 @@ Documentation was another area where I spent considerable time. It's essential f
 
 In retrospect, I see that focusing on stability and core functionality before implementing user niceties like success messages was the right call. Now that I have a stable product, I can go back and implement those success messages. Each step has been a lesson in prioritization and managing project constraints, lessons that are invaluable for a student like me just starting out in this field.
 
+#### Additional info:
+I have implemented a success message for the registration. But only for the localhost. The code is committed and in the GitHub repo (-> members -> templates -> registration -> login.html + members -> views.py).
+After careful consideration, I decided against the deploy. My deadline is Saturday 25.11.2023. Now it is the evening of 24.11.2023. After many years of startup experience, I have experienced one thing again and again: Go Live on Friday. And on Saturday everyone is in a panic. The code works live as tested. And a success message at least locally.
+
+![sucess1](/documentation/assets/success1.JPG "sucess1")
+![sucess2](/documentation/assets/success2.JPG "sucess2")
+![sucess3](/documentation/assets/success3.JPG "sucess3")
+
 #### W3C Validator:
 
 In the initial stages of development, I started off by crafting what I believed were standard HTML templates. Not yet experienced enough to foresee the complexities ahead, I didn't realize that the W3C validator would read the base layout and the individual page templates separately.
