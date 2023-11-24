@@ -4,6 +4,8 @@
 This project is a real initiative involving an actual "client" and a genuine use case. My mother has been battling cancer since she was 18 years old, which means even before I was born. In recent years, she got affected by a rare type of tumor known as GIST. More information about GIST can be found here: https://en.wikipedia.org/wiki/Gastrointestinal_stromal_tumor. She actively participates in a GIST support group. The group has long desired to have its own blog for two main reasons: 1. to spread awareness about the disease, and 2. to simplify the process for people to connect with such a support group. Therefore, the Full Stack project was a perfect match for this purpose. Apart from myself and a friend, the individuals currently registered on the platform for testing are members of this support group.
 Attention: the group is based in Berlin Germay, so some blog posts are in german!
 
+- Live Website: https://gistproject-9ab7b71712a2.herokuapp.com/
+
 ## Self-Reflection:
 I begin this README with a self-reflection to clarify the status of the project. The technical aspect of this project has been overwhelming for me, almost pushing me to give up. It was difficult to understand that virtually all files have vise versa dependencies. I also lost track at some point in the never-ending war of error messages. What does this line actually do again?
 Why did I write it like that 14 days ago? For this reason, I also commented on many lines in order to somehow keep an overview... I would have preferred a more intensive "tandem" for learning purposes for this project. Fortunately, my network helped me with debugging and was there for me during an emotionally difficult time. I started with the PP4 walkthrough. For me personally, understanding the Django settings was challenging from the outset. It's like trying to learn how to drive a car. In the first driving lesson, before you even start driving, you have to tinker with the engine. As a beginner. Without any warning... Therefore, I sought my own way in and tried various other tutorials that worked better for me as an introduction to a Django project. Since the technical part of the project was difficult for me, I have not been able to fully complete the project by writing writing these lines. The design is not yet complete, and some features are not implemented. I will comment on the specific things in the respective sections.
@@ -396,7 +398,8 @@ A "style" block hides the content form field with the id id_content. This is lik
 - Hidden Content Field:
 
 The template includes a hidden content field ({{ form.content }}) that stores the rich text content entered in the Quill editor. This field is initially hidden but is updated using JavaScript to match the content in the Quill editor.
-JavaScript:
+
+- JavaScript:
 
 - The JavaScript code included at the end of the template initializes the Quill editor, sets its initial content, and listens for text changes in the editor. When changes occur, it updates the hidden content form field with the Quill editor's content.
 
@@ -437,7 +440,7 @@ In retrospect, I see that focusing on stability and core functionality before im
 
 In the initial stages of development, I started off by crafting what I believed were standard HTML templates. Not yet experienced enough to foresee the complexities ahead, I didn't realize that the W3C validator would read the base layout and the individual page templates separately.
 
-As I worked through the project, I constructed the site's pages using Django's template inheritance, which allows for a "base" template that contains common elements like the header and footer. Each page then extends this base, adding its own specific content. This is a powerful feature of Django, enabling me to write DRY (Don't Repeat Yourself) code and maintain consistency across the site.
+As I worked through the project, I constructed the site's pages using Django's template inheritance, which allows for a "base" template that contains common elements like the header and footer. Each page then extends this base, adding its own specific content. This is a powerful feature of Django, enabling me to write DRY (Don't Repeat Yourself) code and maintain consistency across the site (It was later in the process that I understood that I could use solely the django base in HTML without the classic standard (see profile_list.html -> members -> templates -> members).).
 
 However, this approach led to an unexpected challenge with the W3C validator. It's designed to validate plain HTML and isn't aware of Django's templating mechanics. So when it reads the base template and a child template together, it sees them as two separate HTML documents instead of parts of a whole. This results in validation errors, as the validator doesn't understand that these templates will be combined into a single, well-formed HTML document when Django renders them.
 
@@ -447,7 +450,7 @@ Choosing to prioritize the functioning and delivery of the project, I've had to 
 
 This has been a valuable learning experience for me. It's taught me about the intricacies of template validation and the importance of balancing code quality with practical project constraints. As I continue to grow in this field, I'll take this knowledge forward to build more robust and standards-compliant websites.
 
-The user-related pages for the profile and the posts cannot be read by the validator for security reasons. In future, it would be better to handle it in a similar way to Facebook. If an attempt is made to hack a page, there should be a redirect to the login.
+#### Important: The user-related pages for the profile and the posts cannot be read by the validator for security reasons. Good for security, bad for validation. In future, it would be better to handle it in a similar way to Facebook. If an attempt is made to hack a page, there should be a redirect to the login.
 
 #### Python Linter:
 
@@ -828,12 +831,171 @@ Testing Members Section + W3C Validator + CSS Validator + Lighthouse
 
 </details>
 
+### Python Linter (testing all relevant files: views, urls, models, forms)
+
+<details>
+<summary>
+Python Linter Testing
+</summary>
+
+#### forms_member
+![forms_member](/documentation/assets/forms_member.JPG "forms_member")
+
+#### forms_blog
+![forms_blog](/documentation/assets/forms_blog.JPG "forms_blog")
+
+#### model_blog
+![model_blog](/documentation/assets/model_blog.JPG "model_blog")
+
+#### url_blog
+![url_blog](/documentation/assets/url_blog.JPG "url_blog")
+
+#### url_member
+![url_member](/documentation/assets/url_member.JPG "url_member")
+
+#### views_blog
+![views_blog](/documentation/assets/views_blog.JPG "views_blog")
+
+#### views_member
+![views_member](/documentation/assets/views_member.JPG "views_member")
+
+</details>
+
 ### Responsive Design (using Chrome dev tools)
 
 ![responsive](/documentation/assets/responsive.JPG "responsive")
 
 ![responsive2](/documentation/assets/responsive2.JPG "responsive2")
 
+## Deployment Process Description
+
+- This project's deployment utilized several services: Heroku, Cloudinary, ElephantSQL, and Quill Text Editor.
+
+#### Library Installation Guide
+
+- To successfully deploy this project on Heroku, follow these steps to install the required libraries. This guide doesn't cover the necessary requirements and settings adjustments post-installation, as they are considered standard follow-up actions.
+
+- To install Gunicorn (Django's server for Heroku), run: pip3 install django gunicorn
+- For psycopg2 (PostgreSQL connector), use: pip3 install dj_database_url psycopg2
+- To install Cloudinary (for hosting static files and images), enter: pip3 install dj3-cloudinary-storage
+- For Quill (to solve Heroku's custom stylesheet rendering issues), execute: pip install django-quill-editor
+
+#### Setting Up the Heroku App
+
+- Sign in to Heroku and access the Dashboard.
+Select "New" and choose "Create new app" from the dropdown menu.
+Name the app suitably, select a relevant region, and click "Create App".
+Creating a PostgreSQL Database with ElephantSQL
+
+- This step is crucial for setting up a Heroku-accessible database, as Django's default database isn't compatible with deployed Heroku apps.
+
+- Log into ElephantSQL and navigate to the Dashboard.
+Click "Create New Instance."
+Choose a plan (e.g., the free "Tiny Turtle" plan), provide a Name (project name), and select a region for the Data center. Tags are optional.
+Review your choices and click "Create Instance."
+Back in the Dashboard, click on your new instance's name.
+Copy the database URL from the instance details.
+Securing Sensitive Information
+
+- Create an env.py file and add it to the .gitignore.
+- In env.py, import os and set the DATABASE_URL environment variable with the URL from ElephantSQL. 
+- Example: os.environ["DATABASE_URL"] = "< copiedURL >".
+- Set the SECRET_KEY variable inventively. 
+- Example: os.environ["SECRET_KEY"] = "mysecretkey".
+
+#### Updating Settings
+
+- At the top of settings.py, add:
+
+- import os
+- import dj_database_url
+- if os.path.isfile('env.py'):
+-    import env
+
+- Replace Django's default SECRET_KEY in settings.py with SECRET_KEY = os.environ.get('SECRET_KEY').
+
+- Update the DATABASES setting to:
+
+- DATABASES = {
+-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+- }
+
+- Save and migrate all changes.
+
+- Connecting Heroku to Database
+
+- In the Heroku dashboard, under the Settings tab, add config vars for 
+-DATABASE_URL, SECRET_KEY, and 
+- PORT (value "8000").
+
+#### Integrating Cloudinary
+
+- Copy the API Environment variable from the Cloudinary dashboard.
+
+In env.py, set 
+- os.environ["CLOUDINARY_URL"] = "< copied_variable" >, 
+- removing CLOUDINARY_URL= from the string.
+
+Add this variable to Heroku config vars as CLOUDINARY_URL.
+
+In settings.py, under INSTALLED_APPS, add cloudinary_storage above django.contrib.staticfiles and cloudinary below it.
+
+- Define Cloudinary for static file storage:
+
+- STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+- DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+- Allow Heroku as a host in settings.py:
+- ALLOWED_HOSTS = ['app-name.herokuapp.com', 'localhost']
+
+## Deploy:
+
+#### Forking a Repo on GitHub:
+
+- Navigate to the GitHub repo: https://github.com/renebaumann3000/gist_project
+- Click the "Fork" button in the top-right corner of the repo page.
+- This will create a copy of the repository under your GitHub account.
+- You can then clone or download the repo as needed.
+- Deploying on Heroku ->
+
+#### Heroku Setup:
+
+- Sign up for a Heroku account if you haven't already: https://signup.heroku.com/
+
+#### Access Deployment Configuration:
+
+- Once logged into Heroku, navigate to the "Deploy" section of your app's dashboard.
+
+#### Choose Deployment Method:
+
+- Under the deployment methods, choose "GitHub" as your preferred method.
+
+#### Connect to GitHub:
+
+- Ensure your connection to GitHub is confirmed.
+- Use the search function provided in this section to locate your repository. In this context, the repository was named "gist_project". Once found, connect to it.
+
+### Deployment Options:
+
+#### Automatic Deploys: 
+- By enabling this, Heroku will automatically rebuild and redeploy the app every time you push a new change to the connected GitHub repository.
+
+#### Manual Deploy:
+
+- If you prefer more control over when the app gets deployed and the ability to view deployment logs, you can choose the "deploy branch" option.
+- When ready, you can manually initiate the deployment process for your specific branch.
+
+## Credits:
+Inspiration Tutorial: Youtube: https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi&index=1
+
+Default images:
+
+- Post default: https://www.bronsonhealth.com/news/breast-cancer-prevention-and-treatment/
+- Profile default: https://www.freepik.com/icon/profile_10015419
+
+Code is written by myself with help from:
+
+- Mentor
+- Friends
 
 
 
